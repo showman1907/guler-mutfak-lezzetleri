@@ -82,7 +82,7 @@
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      width: 300px;
+      width: 300px; /* Masaüstü için ürün kartı genişliği */
       padding: 1rem;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -169,6 +169,23 @@
       display: none;
       z-index: 2000;
     }
+
+    /* Mobil Ekranlar için Responsive Düzen */
+    @media (max-width: 768px) {
+      #products {
+        gap: 1rem;
+        flex-direction: column; /* Kartları alt alta dizmek isterseniz */
+        align-items: center;
+      }
+      .product {
+        width: 90%; /* Mobilde ürün kartlarını daha dar yapalım */
+        max-width: 350px; /* İsteğe bağlı üst sınır */
+      }
+      .product img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -184,10 +201,8 @@
 
   <!-- Ürünler Listesi -->
   <section id="products">
-
-    <!-- 1) KAKAOLU MUHALLEBİ (Yeni Ürün) -->
+    <!-- KAKAOLU MUHALLEBİ -->
     <div class="product" data-name="KAKAOLU MUHALLEBİ" data-price="550">
-      <!-- images klasöründeki kakaolu_muhallebi.jpg'yi kullanıyoruz -->
       <img src="images/kakaolu_muhallebi.jpg" alt="KAKAOLU MUHALLEBİ" />
       <h3>KAKAOLU MUHALLEBİ</h3>
       <p>
@@ -198,8 +213,7 @@
       <span>Fiyat: 550₺</span>
       <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
     </div>
-
-    <!-- Mevcut diğer örnek ürünler (isterseniz silebilir veya düzenleyebilirsiniz) -->
+    <!-- Diğer örnek ürünler -->
     <div class="product" data-name="Çikolatalı Pasta" data-price="80">
       <img src="https://via.placeholder.com/300x200?text=Çikolatalı+Pasta" alt="Çikolatalı Pasta" />
       <h3>Çikolatalı Pasta</h3>
@@ -221,7 +235,6 @@
       <span>Fiyat: 120₺</span>
       <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
     </div>
-
   </section>
 
   <!-- Sepet & Sipariş Bölümü -->
