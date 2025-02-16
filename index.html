@@ -58,43 +58,71 @@
       to { transform: rotate(360deg); }
     }
     
-    /* Fade In Up Animasyonu */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Flip Kart Yapısı */
+    .flip-card {
+      background: transparent;
+      width: 300px;         /* Masaüstü genişliği */
+      height: 400px;        /* Sabit yükseklik */
+      perspective: 1000px;
+      margin: 1rem;
+      position: relative;
+      cursor: pointer;
     }
-    
-    /* Ürünler Bölümü */
-    #products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 2rem;
-      gap: 2rem;
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
     }
-    .product {
-      background: #fff;
+    .flip-card-inner.flipped {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      width: 300px; /* Masaüstü için genişlik */
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       padding: 1rem;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeInUp 1s ease-in-out;
     }
-    .product:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-    }
-    .product img {
+    /* Ön yüz: Resim, Ürün Adı, Fiyat ve Sepete Ekle Butonu */
+    .flip-card-front img {
       width: 100%;
       border-radius: 12px;
+      flex-grow: 1;
+      object-fit: cover;
+    }
+    .flip-card-front h3 {
+      margin: 0.5rem 0;
+    }
+    .flip-card-front span {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    /* Arka yüz: Ürün Açıklaması */
+    .flip-card-back {
+      transform: rotateY(180deg);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .flip-card-back h3 {
+      margin-bottom: 0.5rem;
+    }
+    .flip-card-back p {
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
     
     /* Buton Stilleri */
@@ -107,14 +135,13 @@
       border-radius: 5px;
       cursor: pointer;
       transition: 0.3s;
-      display: block;
-      margin: 10px auto 0;
+      margin-top: 0.5rem;
     }
     .button:hover {
       background: #1e8449;
     }
     
-    /* Sepet Bölümü */
+    /* Sepet & Sipariş Bölümü */
     #cart {
       background: #fff;
       padding: 1rem 2rem;
@@ -170,22 +197,12 @@
       z-index: 2000;
     }
     
-    /* Mobil Ekranlar için Responsive Düzen */
+    /* Mobil Responsive Ayarlar */
     @media (max-width: 768px) {
-      #products {
-        padding: 1rem;
-        gap: 1rem;
-        flex-direction: column;
-        align-items: center;
-      }
-      .product {
+      .flip-card {
         width: 90%;
-        max-width: 250px; /* Mobilde ürün kartları daha küçük */
-        padding: 0.8rem;
-      }
-      .product img {
-        width: 100%;
-        height: auto;
+        max-width: 250px;
+        height: 350px;
       }
       header {
         font-size: 1.3rem;
@@ -195,6 +212,15 @@
         padding: 0.65rem 1.2rem;
         font-size: 0.9rem;
       }
+    }
+    
+    /* Ürünler bölümünü flip kartlarla düzenleyelim */
+    #products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+      gap: 2rem;
     }
   </style>
 </head>
@@ -211,39 +237,68 @@
 
   <!-- Ürünler Listesi -->
   <section id="products">
-    <!-- KAKAOLU MUHALLEBİ -->
-    <div class="product" data-name="KAKAOLU MUHALLEBİ" data-price="550">
-      <img src="images/kakaolu_muhallebi.jpg" alt="KAKAOLU MUHALLEBİ" />
-      <h3>KAKAOLU MUHALLEBİ</h3>
-      <p>
-        Yoğun kakao lezzetiyle hazırlanan, yumuşacık dokusuyla damakları şenlendiren enfes bir tatlı! <br>
-        Her kaşıkta çikolatanın büyüsünü hissedeceksiniz. 😋💛<br>
-        Hemen sipariş verin, tatlı keyfinizi taçlandırın! 🍮🔥
-      </p>
-      <span>Fiyat: 550₺</span>
-      <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
+    <!-- KAKAOLU MUHALLEBİ Flip Kartı -->
+    <div class="flip-card" data-name="KAKAOLU MUHALLEBİ" data-price="550">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/kakaolu_muhallebi.jpg" alt="KAKAOLU MUHALLEBİ" />
+          <h3>KAKAOLU MUHALLEBİ</h3>
+          <span>Fiyat: 550₺</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Yoğun kakao lezzetiyle hazırlanan, yumuşacık dokusuyla damakları şenlendiren enfes bir tatlı!<br>
+            Her kaşıkta çikolatanın büyüsünü hissedeceksiniz. 😋💛<br>
+            Hemen sipariş verin, tatlı keyfinizi taçlandırın! 🍮🔥
+          </p>
+        </div>
+      </div>
     </div>
-    <!-- Diğer örnek ürünler -->
-    <div class="product" data-name="Çikolatalı Pasta" data-price="80">
-      <img src="https://via.placeholder.com/300x200?text=Çikolatalı+Pasta" alt="Çikolatalı Pasta" />
-      <h3>Çikolatalı Pasta</h3>
-      <p>Zengin çikolata aroması ve krema dokunuşu.</p>
-      <span>Fiyat: 80₺</span>
-      <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
+    
+    <!-- Diğer Ürünler İçin Flip Kart Örneği -->
+    <div class="flip-card" data-name="Çikolatalı Pasta" data-price="80">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="https://via.placeholder.com/300x200?text=Çikolatalı+Pasta" alt="Çikolatalı Pasta" />
+          <h3>Çikolatalı Pasta</h3>
+          <span>Fiyat: 80₺</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>Zengin çikolata aroması ve krema dokunuşu.</p>
+        </div>
+      </div>
     </div>
-    <div class="product" data-name="Meyveli Pasta" data-price="90">
-      <img src="https://via.placeholder.com/300x200?text=Meyveli+Pasta" alt="Meyveli Pasta" />
-      <h3>Meyveli Pasta</h3>
-      <p>Taze meyvelerle süslenmiş nefis pasta.</p>
-      <span>Fiyat: 90₺</span>
-      <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
+    <div class="flip-card" data-name="Meyveli Pasta" data-price="90">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="https://via.placeholder.com/300x200?text=Meyveli+Pasta" alt="Meyveli Pasta" />
+          <h3>Meyveli Pasta</h3>
+          <span>Fiyat: 90₺</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>Taze meyvelerle süslenmiş nefis pasta.</p>
+        </div>
+      </div>
     </div>
-    <div class="product" data-name="Lezzetli Yemek" data-price="120">
-      <img src="https://via.placeholder.com/300x200?text=Lezzetli+Yemek" alt="Lezzetli Yemek" />
-      <h3>Lezzetli Yemek</h3>
-      <p>Geleneksel tariflerle hazırlanmış enfes yemek.</p>
-      <span>Fiyat: 120₺</span>
-      <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
+    <div class="flip-card" data-name="Lezzetli Yemek" data-price="120">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="https://via.placeholder.com/300x200?text=Lezzetli+Yemek" alt="Lezzetli Yemek" />
+          <h3>Lezzetli Yemek</h3>
+          <span>Fiyat: 120₺</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>Geleneksel tariflerle hazırlanmış enfes yemek.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -252,9 +307,7 @@
     <h2>Sepetiniz</h2>
     <ul id="cart-items"></ul>
     <p id="total-price">Toplam: 0₺</p>
-    <!-- Sepeti Kopyala Butonu -->
     <button id="copy-cart-btn" class="button" onclick="copyCart()">Sepeti Kopyala</button>
-    <!-- Instagram Sipariş Ver Butonu -->
     <button id="order-btn" class="button" onclick="placeOrder()">Instagram Sipariş Ver</button>
   </section>
   
@@ -264,11 +317,12 @@
   <script>
     let cart = [];
 
-    // Ürünü sepete ekleyen fonksiyon
-    function addToCart(button) {
-      const productElement = button.parentElement;
-      const name = productElement.getAttribute('data-name');
-      const price = productElement.getAttribute('data-price');
+    // "Sepete Ekle" butonuna tıklandığında, tıklamanın flip işlemini tetiklememesi için event propagation'ı durduruyoruz.
+    function addToCart(e, button) {
+      e.stopPropagation();
+      const card = button.closest('.flip-card');
+      const name = card.getAttribute('data-name');
+      const price = card.getAttribute('data-price');
       cart.push({ name, price });
       updateCart();
       alert(`${name} sepete eklendi!`);
@@ -283,7 +337,6 @@
         const li = document.createElement('li');
         li.textContent = `${item.name} - ${item.price}₺`;
         
-        // Ürünü silmek için "Sil" butonu ekle
         const removeBtn = document.createElement('button');
         removeBtn.textContent = "Sil";
         removeBtn.classList.add("remove-button");
@@ -296,13 +349,12 @@
       document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
     }
 
-    // Sepetten ürünü silen fonksiyon
     function removeFromCart(index) {
       cart.splice(index, 1);
       updateCart();
     }
 
-    // Sepeti panoya kopyalama fonksiyonu
+    // Sepeti panoya kopyalama fonksiyonu (önceki kodla aynı)
     function copyCart() {
       if (cart.length === 0) {
         alert("Sepetiniz boş, kopyalanacak bir ürün yok!");
@@ -313,7 +365,6 @@
         message += `${item.name} - ${item.price}₺\n`;
       });
       
-      // Önce Clipboard API ile kopyalamayı deniyoruz
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(message)
           .then(() => {
@@ -331,7 +382,6 @@
               });
           });
       } else {
-        // Clipboard API desteklenmiyorsa fallback yöntemiyle kopyalayalım
         fallbackCopyTextToClipboard(message)
           .then(() => {
             showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
@@ -343,12 +393,11 @@
       }
     }
 
-    // Fallback kopyalama yöntemi: execCommand kullanılarak kopyalama
     function fallbackCopyTextToClipboard(text) {
       return new Promise(function(resolve, reject) {
         const textArea = document.createElement("textarea");
         textArea.value = text;
-        textArea.style.position = "fixed";  // Sayfa kaymasını önlemek için
+        textArea.style.position = "fixed";
         textArea.style.opacity = "0";
         document.body.appendChild(textArea);
         textArea.focus();
@@ -368,18 +417,15 @@
       });
     }
 
-    // Kopyalama bildirimi gösteren fonksiyon
     function showCopyNotification(message) {
       const notification = document.getElementById('copy-notification');
       notification.textContent = message;
       notification.style.display = "block";
-      // Bildirimin 5 saniye boyunca kalması için süre 5000 ms
       setTimeout(() => {
         notification.style.display = "none";
       }, 5000);
     }
 
-    // Sipariş ver butonuna basıldığında Instagram DM’ye yönlendiren fonksiyon
     function placeOrder() {
       if (cart.length === 0) {
         alert("Sepetiniz boş, sipariş veremezsiniz!");
@@ -392,6 +438,16 @@
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://www.instagram.com/m/guler_mutfak_lezzetleri/?text=${encodedMessage}`, "_blank");
     }
+
+    // Tüm flip kartlara, kartın tıklanmasıyla flip işlemini tetikleyen event ekliyoruz
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        // Eğer tıklanan eleman bir buton değilse flip işlemi yapılır
+        if (e.target.tagName.toLowerCase() !== 'button') {
+          this.querySelector('.flip-card-inner').classList.toggle('flipped');
+        }
+      });
+    });
   </script>
 </body>
 </html>
