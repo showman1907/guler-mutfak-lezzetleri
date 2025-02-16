@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Güler Mutfak Lezzetleri</title>
+  <style>
+    /* Global Reset & Temel Stil */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Başlık */
+    header {
+      background: rgba(255, 145, 77, 0.8);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Dönen Arka Plan İkonları */
+    .background-icons {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.2;
+      overflow: hidden;
+    }
+    .background-icons img {
+      position: absolute;
+      width: 100px;
+      animation: rotate 10s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Fade In Up Animasyonu */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Ürünler Bölümü */
+    #products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .product {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 300px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    .product img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    
+    /* Buton Stilleri */
+    .button {
+      background: #27ae60;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: block;
+      margin: 10px auto 0;
+    }
+    .button:hover {
+      background: #1e8449;
+    }
+    
+    /* Sepet Bölümü */
+    #cart {
+      background: #fff;
+      padding: 1rem 2rem;
+      margin: 2rem auto;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    #cart h2 {
+      margin-bottom: 1rem;
+    }
+    #cart-items {
+      list-style: none;
+      margin-bottom: 1rem;
+      padding: 0;
+    }
+    #cart-items li {
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .remove-button {
+      background: #e74c3c;
+      border: none;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: background 0.3s;
+    }
+    .remove-button:hover {
+      background: #c0392b;
+    }
+    #total-price {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    
+    /* Bildirim Stili */
+    #copy-notification {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #27ae60;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: none;
+      z-index: 2000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🍰 Güler Mutfak Lezzetleri 🍽️
+  </header>
+
+  <div class="background-icons">
+    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046786.png" style="top: 10%; left: 10%;" alt="icon1">
+    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046785.png" style="top: 50%; left: 80%;" alt="icon2">
+    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046783.png" style="top: 80%; left: 30%;" alt="icon3">
+  </div>
+
+  <!-- Ürünler Listesi -->
+  <section id="products">
+
+    <!-- 1) KAKAOLU MUHALLEBİ (Yeni Ürün) -->
+    <div class="product" data-name="KAKAOLU MUHALLEBİ" data-price="550">
+      <!-- images klasöründeki kakaolu_muhallebi.jpg'yi kullanıyoruz -->
+      <img src="images/kakaolu_muhallebi.jpg" alt="KAKAOLU MUHALLEBİ" />
+      <h3>KAKAOLU MUHALLEBİ</h3>
+      <p>
+        Yoğun kakao lezzetiyle hazırlanan, yumuşacık dokusuyla damakları şenlendiren enfes bir tatlı! <br>
+        Her kaşıkta çikolatanın büyüsünü hissedeceksiniz. 😋💛<br>
+        Hemen sipariş verin, tatlı keyfinizi taçlandırın! 🍮🔥
+      </p>
+      <span>Fiyat: 550₺</span>
+      <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
+    </div>
+
+    <!-- Mevcut diğer örnek ürünler (isterseniz silebilir veya düzenleyebilirsiniz) -->
+    <div class="product" data-name="Çikolatalı Pasta" data-price="80">
+      <img src="https://via.placeholder.com/300x200?text=Çikolatalı+Pasta" alt="Çikolatalı Pasta" />
+      <h3>Çikolatalı Pasta</h3>
+      <p>Zengin çikolata aroması ve krema dokunuşu.</p>
+      <span>Fiyat: 80₺</span>
+      <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
+    </div>
+    <div class="product" data-name="Meyveli Pasta" data-price="90">
+      <img src="https://via.placeholder.com/300x200?text=Meyveli+Pasta" alt="Meyveli Pasta" />
+      <h3>Meyveli Pasta</h3>
+      <p>Taze meyvelerle süslenmiş nefis pasta.</p>
+      <span>Fiyat: 90₺</span>
+      <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
+    </div>
+    <div class="product" data-name="Lezzetli Yemek" data-price="120">
+      <img src="https://via.placeholder.com/300x200?text=Lezzetli+Yemek" alt="Lezzetli Yemek" />
+      <h3>Lezzetli Yemek</h3>
+      <p>Geleneksel tariflerle hazırlanmış enfes yemek.</p>
+      <span>Fiyat: 120₺</span>
+      <button onclick="addToCart(this)" class="button">Sepete Ekle</button>
+    </div>
+
+  </section>
+
+  <!-- Sepet & Sipariş Bölümü -->
+  <section id="cart">
+    <h2>Sepetiniz</h2>
+    <ul id="cart-items"></ul>
+    <p id="total-price">Toplam: 0₺</p>
+    <!-- Sepeti Kopyala Butonu -->
+    <button id="copy-cart-btn" class="button" onclick="copyCart()">Sepeti Kopyala</button>
+    <!-- Instagram Sipariş Ver Butonu -->
+    <button id="order-btn" class="button" onclick="placeOrder()">Instagram Sipariş Ver</button>
+  </section>
+  
+  <!-- Kopyalama Bildirimi -->
+  <div id="copy-notification"></div>
+
+  <script>
+    let cart = [];
+
+    // Ürünü sepete ekleyen fonksiyon
+    function addToCart(button) {
+      const productElement = button.parentElement;
+      const name = productElement.getAttribute('data-name');
+      const price = productElement.getAttribute('data-price');
+      cart.push({ name, price });
+      updateCart();
+      alert(`${name} sepete eklendi!`);
+    }
+
+    // Sepeti güncelleyen fonksiyon
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price}₺`;
+        
+        // Ürünü silmek için "Sil" butonu ekle
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "Sil";
+        removeBtn.classList.add("remove-button");
+        removeBtn.onclick = () => removeFromCart(index);
+        li.appendChild(removeBtn);
+        
+        cartItems.appendChild(li);
+        total += Number(item.price);
+      });
+      document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
+    }
+
+    // Sepetten ürünü silen fonksiyon
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    // Sepeti panoya kopyalama fonksiyonu
+    function copyCart() {
+      if (cart.length === 0) {
+        alert("Sepetiniz boş, kopyalanacak bir ürün yok!");
+        return;
+      }
+      let message = "Merhaba, siparişim:\n";
+      cart.forEach(item => {
+        message += `${item.name} - ${item.price}₺\n`;
+      });
+      
+      // Önce Clipboard API ile kopyalamayı deniyoruz
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(message)
+          .then(() => {
+            showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
+          })
+          .catch(err => {
+            console.error("Clipboard API ile kopyalama başarısız oldu, fallback deneniyor:", err);
+            fallbackCopyTextToClipboard(message)
+              .then(() => {
+                showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
+              })
+              .catch(fallbackErr => {
+                console.error("Fallback kopyalama işlemi başarısız oldu:", fallbackErr);
+                alert("Kopyalama işlemi başarısız oldu.");
+              });
+          });
+      } else {
+        // Clipboard API desteklenmiyorsa fallback yöntemiyle kopyalayalım
+        fallbackCopyTextToClipboard(message)
+          .then(() => {
+            showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
+          })
+          .catch(err => {
+            console.error("Fallback kopyalama işlemi başarısız oldu:", err);
+            alert("Kopyalama işlemi başarısız oldu.");
+          });
+      }
+    }
+
+    // Fallback kopyalama yöntemi: execCommand kullanılarak kopyalama
+    function fallbackCopyTextToClipboard(text) {
+      return new Promise(function(resolve, reject) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";  // Sayfa kaymasını önlemek için
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          const successful = document.execCommand('copy');
+          document.body.removeChild(textArea);
+          if (successful) {
+            resolve();
+          } else {
+            reject("execCommand ile kopyalama başarısız oldu.");
+          }
+        } catch (err) {
+          document.body.removeChild(textArea);
+          reject(err);
+        }
+      });
+    }
+
+    // Kopyalama bildirimi gösteren fonksiyon
+    function showCopyNotification(message) {
+      const notification = document.getElementById('copy-notification');
+      notification.textContent = message;
+      notification.style.display = "block";
+      // Bildirimin 5 saniye boyunca kalması için süre 5000 ms
+      setTimeout(() => {
+        notification.style.display = "none";
+      }, 5000);
+    }
+
+    // Sipariş ver butonuna basıldığında Instagram DM’ye yönlendiren fonksiyon
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert("Sepetiniz boş, sipariş veremezsiniz!");
+        return;
+      }
+      let message = "Merhaba, siparişim:\n";
+      cart.forEach(item => {
+        message += `${item.name} - ${item.price}₺\n`;
+      });
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://www.instagram.com/m/guler_mutfak_lezzetleri/?text=${encodedMessage}`, "_blank");
+    }
+  </script>
+</body>
+</html>
