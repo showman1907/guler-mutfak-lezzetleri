@@ -83,7 +83,6 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -237,70 +236,82 @@
   
   <!-- Ürünler Listesi -->
   <section id="products">
-    <!-- KAKAOLU MUHALLEBİ Flip Kartı -->
-    <div class="flip-card" data-name="KAKAOLU MUHALLEBİ" data-price="550">
+    <!-- İÇLİ KÖFTE(DIŞI ETSİZ) -->
+    <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/kakaolu_muhallebi.jpg" alt="KAKAOLU MUHALLEBİ" />
-          <h3>KAKAOLU MUHALLEBİ</h3>
+          <img src="images/icli_kofte.jpg" alt="İÇLİ KÖFTE(DIŞI ETSİZ)" />
+          <h3>İÇLİ KÖFTE(DIŞI ETSİZ)</h3>
+          <span>Fiyat: 650₺ (1 kg)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋<br>
+            İncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz sofralarınıza lezzet katıyor. <br>
+            El yapımı, katkısız ve taptaze!
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SARAY SARMASI -->
+    <div class="flip-card" data-name="SARAY SARMASI" data-price="550">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/saray_sarmasi.jpg" alt="SARAY SARMASI" />
+          <h3>SARAY SARMASI</h3>
           <span>Fiyat: 550₺</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
           <h3>Açıklama</h3>
           <p>
-            Yoğun kakao lezzetiyle hazırlanan, yumuşacık dokusuyla damakları şenlendiren enfes bir tatlı!<br>
-            Her kaşıkta çikolatanın büyüsünü hissedeceksiniz. 😋💛<br>
-            Hemen sipariş verin, tatlı keyfinizi taçlandırın! 🍮🔥
+            Güler Mutfak Lezzetleri’nden enfes Saray Sarması! 🍫✨<br>
+            Yumuşacık kıvamı, bol kreması ve yoğun çikolata lezzetiyle tatlı keyfinizi taçlandırıyoruz. <br>
+            Hindistan ceviziyle kaplı bu lezzeti mutlaka denemelisiniz!
           </p>
         </div>
       </div>
     </div>
     
-    <!-- Çikolatalı Pasta Flip Kartı -->
-    <div class="flip-card" data-name="Çikolatalı Pasta" data-price="80">
+    <!-- PROFİTEROL -->
+    <div class="flip-card" data-name="PROFİTEROL" data-price="470">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="https://via.placeholder.com/300x200?text=Çikolatalı+Pasta" alt="Çikolatalı Pasta" />
-          <h3>Çikolatalı Pasta</h3>
-          <span>Fiyat: 80₺</span>
+          <img src="images/profiterol.jpg" alt="PROFİTEROL" />
+          <h3>PROFİTEROL</h3>
+          <span>Fiyat: 470₺ (1 kg)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
           <h3>Açıklama</h3>
-          <p>Zengin çikolata aroması ve krema dokunuşu.</p>
+          <p>
+            Güler Mutfak Lezzetleri’nden nefis profiterol! 🍫😍<br>
+            Dışı çıtır, içi bol kremalı, üstü yoğun çikolata sosuyla kaplı bu eşsiz lezzet tatlı krizlerinize birebir! <br>
+            Her lokmada mutluluk garantili!
+          </p>
         </div>
       </div>
     </div>
     
-    <!-- Meyveli Pasta Flip Kartı -->
-    <div class="flip-card" data-name="Meyveli Pasta" data-price="90">
+    <!-- ACILI EKMEK(HATAY USULÜ) -->
+    <div class="flip-card" data-name="ACILI EKMEK(HATAY USULÜ)" data-price="600">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="https://via.placeholder.com/300x200?text=Meyveli+Pasta" alt="Meyveli Pasta" />
-          <h3>Meyveli Pasta</h3>
-          <span>Fiyat: 90₺</span>
+          <img src="images/acili_ekmek.jpg" alt="ACILI EKMEK(HATAY USULÜ)" />
+          <h3>ACILI EKMEK(HATAY USULÜ)</h3>
+          <span>Fiyat: 600₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
           <h3>Açıklama</h3>
-          <p>Taze meyvelerle süslenmiş nefis pasta.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Lezzetli Yemek Flip Kartı -->
-    <div class="flip-card" data-name="Lezzetli Yemek" data-price="120">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="https://via.placeholder.com/300x200?text=Lezzetli+Yemek" alt="Lezzetli Yemek" />
-          <h3>Lezzetli Yemek</h3>
-          <span>Fiyat: 120₺</span>
-          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
-        </div>
-        <div class="flip-card-back">
-          <h3>Açıklama</h3>
-          <p>Geleneksel tariflerle hazırlanmış enfes yemek.</p>
+          <p>
+            Hatay usulü acılı ekmek! 🔥🍞<br>
+            Bol baharatlı, ev yapımı salça, nefis kıvamlı harcı ve yumuşacık hamuruyla sofralarınıza lezzet katıyoruz! <br>
+            Çay saatine, kahvaltıya, her öğüne yakışan bu özel tat şimdi sipariş için hazır!
+          </p>
         </div>
       </div>
     </div>
@@ -451,9 +462,10 @@
       }
     }
     
-    // Tüm flip kartlara, tıklama ile flip işlemini tetikleyen event ekliyoruz.
+    // Flip kartlara tıklayınca flip işlemini tetikliyoruz.
     document.querySelectorAll('.flip-card').forEach(card => {
       card.addEventListener('click', function(e) {
+        // Tıklanan eleman buton değilse kartı çevir
         if (e.target.tagName.toLowerCase() !== 'button') {
           this.querySelector('.flip-card-inner').classList.toggle('flipped');
         }
