@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Güler Mutfak Lezzetleri</title>
+
+  <!-- Favicon ve Mobil Ana Ekran İkonu -->
+  <!-- 'guler_logo.png' dosyasını 'images' klasörüne koyduğunuzdan emin olun. -->
+  <link rel="icon" type="image/png" href="images/guler_logo.png">
+  <link rel="apple-touch-icon" href="images/guler_logo.png">
+
   <style>
     /* Global Reset & Temel Stil */
     * {
@@ -185,7 +191,8 @@
     /* Bildirim Stili */
     #copy-notification {
       position: fixed;
-      bottom: 20px;
+      /* Bildirimi biraz daha yukarı alıyoruz ki Instagram butonunu kapatmasın */
+      bottom: 80px; 
       left: 50%;
       transform: translateX(-50%);
       background: #27ae60;
@@ -249,7 +256,7 @@
           <h3>Açıklama</h3>
           <p>
             Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋<br>
-            İncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz sofralarınıza lezzet katıyor. <br>
+            İncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz sofralarınıza lezzet katıyor.<br>
             El yapımı, katkısız ve taptaze!
           </p>
         </div>
@@ -269,7 +276,7 @@
           <h3>Açıklama</h3>
           <p>
             Güler Mutfak Lezzetleri’nden enfes Saray Sarması! 🍫✨<br>
-            Yumuşacık kıvamı, bol kreması ve yoğun çikolata lezzetiyle tatlı keyfinizi taçlandırıyoruz. <br>
+            Yumuşacık kıvamı, bol kreması ve yoğun çikolata lezzetiyle tatlı keyfinizi taçlandırıyoruz.<br>
             Hindistan ceviziyle kaplı bu lezzeti mutlaka denemelisiniz!
           </p>
         </div>
@@ -289,7 +296,7 @@
           <h3>Açıklama</h3>
           <p>
             Güler Mutfak Lezzetleri’nden nefis profiterol! 🍫😍<br>
-            Dışı çıtır, içi bol kremalı, üstü yoğun çikolata sosuyla kaplı bu eşsiz lezzet tatlı krizlerinize birebir! <br>
+            Dışı çıtır, içi bol kremalı, üstü yoğun çikolata sosuyla kaplı bu eşsiz lezzet tatlı krizlerinize birebir!<br>
             Her lokmada mutluluk garantili!
           </p>
         </div>
@@ -309,7 +316,7 @@
           <h3>Açıklama</h3>
           <p>
             Hatay usulü acılı ekmek! 🔥🍞<br>
-            Bol baharatlı, ev yapımı salça, nefis kıvamlı harcı ve yumuşacık hamuruyla sofralarınıza lezzet katıyoruz! <br>
+            Bol baharatlı, ev yapımı salça, nefis kıvamlı harcı ve yumuşacık hamuruyla sofralarınıza lezzet katıyoruz!<br>
             Çay saatine, kahvaltıya, her öğüne yakışan bu özel tat şimdi sipariş için hazır!
           </p>
         </div>
@@ -441,7 +448,7 @@
       }, 5000);
     }
     
-    // Güncellenmiş placeOrder fonksiyonu:
+    // placeOrder fonksiyonu:
     // Mobilde (window.innerWidth < 768) direkt Instagram sayfasını açar,
     // Masaüstünde DM oluşturmayı dener.
     function placeOrder() {
