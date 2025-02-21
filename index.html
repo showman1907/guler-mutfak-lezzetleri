@@ -6,7 +6,6 @@
   <title>Güler Mutfak Lezzetleri</title>
 
   <!-- Favicon ve Mobil Ana Ekran İkonu -->
-  <!-- 'guler_logo.png' dosyasını 'images' klasörüne koyduğunuzdan emin olun. -->
   <link rel="icon" type="image/png" href="images/guler_logo.png">
   <link rel="apple-touch-icon" href="images/guler_logo.png">
 
@@ -191,8 +190,7 @@
     /* Bildirim Stili */
     #copy-notification {
       position: fixed;
-      /* Bildirimi biraz daha yukarı alıyoruz ki Instagram butonunu kapatmasın */
-      bottom: 80px; 
+      bottom: 80px; /* Daha yukarıda, butonu kapatmasın */
       left: 50%;
       transform: translateX(-50%);
       background: #27ae60;
@@ -243,7 +241,7 @@
   
   <!-- Ürünler Listesi -->
   <section id="products">
-    <!-- İÇLİ KÖFTE(DIŞI ETSİZ) -->
+    <!-- İçli Köfte -->
     <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -263,7 +261,7 @@
       </div>
     </div>
     
-    <!-- SARAY SARMASI -->
+    <!-- Saray Sarması -->
     <div class="flip-card" data-name="SARAY SARMASI" data-price="550">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -283,7 +281,7 @@
       </div>
     </div>
     
-    <!-- PROFİTEROL -->
+    <!-- Profiterol -->
     <div class="flip-card" data-name="PROFİTEROL" data-price="470">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -303,7 +301,7 @@
       </div>
     </div>
     
-    <!-- ACILI EKMEK(HATAY USULÜ) -->
+    <!-- Acılı Ekmek (Hatay Usulü) -->
     <div class="flip-card" data-name="ACILI EKMEK(HATAY USULÜ)" data-price="600">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -318,6 +316,126 @@
             Hatay usulü acılı ekmek! 🔥🍞<br>
             Bol baharatlı, ev yapımı salça, nefis kıvamlı harcı ve yumuşacık hamuruyla sofralarınıza lezzet katıyoruz!<br>
             Çay saatine, kahvaltıya, her öğüne yakışan bu özel tat şimdi sipariş için hazır!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Elmalı Kurabiye (Yeni) -->
+    <div class="flip-card" data-name="ELMALI KURABİYE" data-price="550">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/elmali_kurabiye.jpg" alt="ELMALI KURABİYE" />
+          <h3>ELMALI KURABİYE</h3>
+          <span>Fiyat: 550₺ (1 tepsi)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden mis gibi elmalı kurabiye! 🍏🍪<br>
+            Ağızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi!<br>
+            Mis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mayalı Poğaça (Sade) (Yeni) -->
+    <div class="flip-card" data-name="MAYALI POĞAÇA(SADE)" data-price="550">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/mayali_pogaca_sade.jpg" alt="MAYALI POĞAÇA(SADE)" />
+          <h3>MAYALI POĞAÇA(SADE)</h3>
+          <span>Fiyat: 550₺ (1 tepsi)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨<br>
+            Tel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!<br>
+            Sıcak sıcak, taptaze siparişler için hemen bize ulaşın!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mayalı Poğaça (Peynirli) (Yeni) -->
+    <div class="flip-card" data-name="MAYALI POĞAÇA(PEYNİRLİ)" data-price="600">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/mayali_pogaca_peynirli.jpg" alt="MAYALI POĞAÇA(PEYNİRLİ)" />
+          <h3>MAYALI POĞAÇA(PEYNİRLİ)</h3>
+          <span>Fiyat: 600₺ (1 tepsi)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨<br>
+            Tel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!<br>
+            Sıcak sıcak, taptaze siparişler için hemen bize ulaşın!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zeytinyağlı Sarma (Yeni) -->
+    <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA" />
+          <h3>ZEYTİNYAĞLI SARMA</h3>
+          <span>Fiyat: 530₺ (1 kg)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋<br>
+            İncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!<br>
+            Lokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etli Yaprak Sarma (Yeni) -->
+    <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/etli_yaprak_sarma.jpg" alt="ETLİ YAPRAK SARMA" />
+          <h3>ETLİ YAPRAK SARMA</h3>
+          <span>Fiyat: 650₺ (1 kg)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden enfes etli yaprak sarma! 🍖🍃<br>
+            İncecik asma yapraklarına sarılmış, kıymalı ve baharatlarla lezzetlendirilmiş, tam kıvamında pişmiş sarma lezzeti!<br>
+            Geleneksel sofralarınız için vazgeçilmez bir tat!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cup Kek (Yeni) -->
+    <div class="flip-card" data-name="CUP KEK" data-price="530">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/cup_kek.jpg" alt="CUP KEK" />
+          <h3>CUP KEK</h3>
+          <span>Fiyat: 530₺ (24 Adet)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden nefis çikolatalı cup kek! 🍫🧁<br>
+            Yumuşacık dokusu, kakao, çikolata damlası ve ceviz parçalarıyla her lokmada mutluluk veren bu cup kekleri denemelisiniz!<br>
+            Çay ve kahve saatlerinizin vazgeçilmezi olacak!
           </p>
         </div>
       </div>
@@ -339,7 +457,7 @@
   <script>
     let cart = [];
     
-    // "Sepete Ekle" butonuna tıklanırken flip işleminin tetiklenmemesi için event propagation'ı durduruyoruz.
+    // "Sepete Ekle" butonuna tıklanırken flip işleminin tetiklenmemesi için event.stopPropagation()
     function addToCart(e, button) {
       e.stopPropagation();
       const card = button.closest('.flip-card');
