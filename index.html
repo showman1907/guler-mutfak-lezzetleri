@@ -62,12 +62,32 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    /* Yeni Arka Plan İkonları: Tabak içinde yemek, pasta vb. */
+    /* Örnek ikon URL’leri, dilediğiniz ikonlarla değiştirilebilir */
+    .background-icons img.icon1 {
+      top: 10%;
+      left: 10%;
+      /* Plate Food Icon */
+      content: url("https://cdn-icons-png.flaticon.com/512/2922/2922510.png");
+    }
+    .background-icons img.icon2 {
+      top: 50%;
+      left: 80%;
+      /* Plate with Food Icon */
+      content: url("https://cdn-icons-png.flaticon.com/512/2922/2922512.png");
+    }
+    .background-icons img.icon3 {
+      top: 80%;
+      left: 30%;
+      /* Another Plate/Pasta Icon */
+      content: url("https://cdn-icons-png.flaticon.com/512/2922/2922515.png");
+    }
     
     /* Flip Kart Yapısı */
     .flip-card {
       background: transparent;
-      width: 300px;    /* Masaüstü genişliği */
-      height: 400px;   /* Kartın toplam yüksekliği */
+      width: 300px;         /* Masaüstü genişliği */
+      height: 400px;        /* Kartın toplam yüksekliği */
       perspective: 1000px;
       margin: 1rem;
       position: relative;
@@ -217,7 +237,7 @@
         font-size: 0.9rem;
       }
       .flip-card-front img {
-        height: 150px; /* Mobilde biraz daha kısa tutabilirsiniz */
+        height: 150px; /* Mobilde biraz daha kısa */
       }
     }
     
@@ -237,18 +257,18 @@
   </header>
   
   <div class="background-icons">
-    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046786.png" style="top: 10%; left: 10%;" alt="icon1">
-    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046785.png" style="top: 50%; left: 80%;" alt="icon2">
-    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046783.png" style="top: 80%; left: 30%;" alt="icon3">
+    <img class="icon1" alt="Plate Icon 1">
+    <img class="icon2" alt="Plate Icon 2">
+    <img class="icon3" alt="Plate Icon 3">
   </div>
   
-  <!-- ÜRÜNLER LİSTESİ (Hepsi) -->
+  <!-- ÜRÜNLER LİSTESİ (Tüm ürünler) -->
   <section id="products">
     <!-- İçli Köfte -->
     <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/icli_kofte.jpg" alt="İÇLİ KÖFTE(DIŞI ETSİZ)" />
+          <img src="images/icli_kofte.jpg" alt="İÇLİ KÖFTE(DIŞI ETSİZ)">
           <h3>İÇLİ KÖFTE(DIŞI ETSİZ)</h3>
           <span>Fiyat: 650₺ (1 kg)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -268,7 +288,7 @@
     <div class="flip-card" data-name="SARAY SARMASI" data-price="550">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/saray_sarmasi.jpg" alt="SARAY SARMASI" />
+          <img src="images/saray_sarmasi.jpg" alt="SARAY SARMASI">
           <h3>SARAY SARMASI</h3>
           <span>Fiyat: 550₺</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -288,7 +308,7 @@
     <div class="flip-card" data-name="PROFİTEROL" data-price="470">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/profiterol.jpg" alt="PROFİTEROL" />
+          <img src="images/profiterol.jpg" alt="PROFİTEROL">
           <h3>PROFİTEROL</h3>
           <span>Fiyat: 470₺ (1 kg)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -304,11 +324,11 @@
       </div>
     </div>
     
-    <!-- Acılı Ekmek (Hatay Usulü) -->
+    <!-- Acılı Ekmek -->
     <div class="flip-card" data-name="ACILI EKMEK(HATAY USULÜ)" data-price="600">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/acili_ekmek.jpg" alt="ACILI EKMEK(HATAY USULÜ)" />
+          <img src="images/acili_ekmek.jpg" alt="ACILI EKMEK(HATAY USULÜ)">
           <h3>ACILI EKMEK(HATAY USULÜ)</h3>
           <span>Fiyat: 600₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -323,12 +343,12 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Elmalı Kurabiye -->
     <div class="flip-card" data-name="ELMALI KURABİYE" data-price="550">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/elmali_kurabiye.jpg" alt="ELMALI KURABİYE" />
+          <img src="images/elmali_kurabiye.jpg" alt="ELMALI KURABİYE">
           <h3>ELMALI KURABİYE</h3>
           <span>Fiyat: 550₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -343,12 +363,12 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Mayalı Poğaça (Sade) -->
     <div class="flip-card" data-name="MAYALI POĞAÇA(SADE)" data-price="550">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/mayali_pogaca_sade.jpg" alt="MAYALI POĞAÇA(SADE)" />
+          <img src="images/mayali_pogaca_sade.jpg" alt="MAYALI POĞAÇA(SADE)">
           <h3>MAYALI POĞAÇA(SADE)</h3>
           <span>Fiyat: 550₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -363,12 +383,12 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Mayalı Poğaça (Peynirli) -->
     <div class="flip-card" data-name="MAYALI POĞAÇA(PEYNİRLİ)" data-price="600">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/mayali_pogaca_peynirli.jpg" alt="MAYALI POĞAÇA(PEYNİRLİ)" />
+          <img src="images/mayali_pogaca_peynirli.jpg" alt="MAYALI POĞAÇA(PEYNİRLİ)">
           <h3>MAYALI POĞAÇA(PEYNİRLİ)</h3>
           <span>Fiyat: 600₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -383,12 +403,12 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Zeytinyağlı Sarma -->
     <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA" />
+          <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA">
           <h3>ZEYTİNYAĞLI SARMA</h3>
           <span>Fiyat: 530₺ (1 kg)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -403,12 +423,12 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Etli Yaprak Sarma -->
     <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/etli_yaprak_sarma.jpg" alt="ETLİ YAPRAK SARMA" />
+          <img src="images/etli_yaprak_sarma.jpg" alt="ETLİ YAPRAK SARMA">
           <h3>ETLİ YAPRAK SARMA</h3>
           <span>Fiyat: 650₺ (1 kg)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -423,12 +443,12 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Cup Kek -->
     <div class="flip-card" data-name="CUP KEK" data-price="530">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/cup_kek.jpg" alt="CUP KEK" />
+          <img src="images/cup_kek.jpg" alt="CUP KEK">
           <h3>CUP KEK</h3>
           <span>Fiyat: 530₺ (24 Adet)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -460,7 +480,6 @@
   <script>
     let cart = [];
     
-    // "Sepete Ekle" butonuna tıklanırken flip işleminin tetiklenmemesi için event.stopPropagation()
     function addToCart(e, button) {
       e.stopPropagation();
       const card = button.closest('.flip-card');
@@ -471,7 +490,6 @@
       alert(`${name} sepete eklendi!`);
     }
     
-    // Sepeti güncelleyen fonksiyon
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
@@ -497,7 +515,6 @@
       updateCart();
     }
     
-    // Sepeti panoya kopyalama fonksiyonu
     function copyCart() {
       if (cart.length === 0) {
         alert("Sepetiniz boş, kopyalanacak bir ürün yok!");
@@ -569,9 +586,6 @@
       }, 5000);
     }
     
-    // placeOrder fonksiyonu:
-    // Mobilde (window.innerWidth < 768) direkt Instagram sayfasını açar,
-    // Masaüstünde DM oluşturmayı dener.
     function placeOrder() {
       if (cart.length === 0) {
         alert("Sepetiniz boş, sipariş veremezsiniz!");
@@ -590,7 +604,6 @@
       }
     }
     
-    // Flip kartlara tıklayınca flip işlemini tetikliyoruz.
     document.querySelectorAll('.flip-card').forEach(card => {
       card.addEventListener('click', function(e) {
         if (e.target.tagName.toLowerCase() !== 'button') {
