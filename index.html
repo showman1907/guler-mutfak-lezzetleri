@@ -226,31 +226,51 @@
     /* Sepet & Sipariş Bölümü */
     #cart {
       background: #fff;
-      padding: 1rem 2rem;
+      padding: 1rem;
       margin: 2rem auto;
       max-width: 500px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       text-align: center;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
     }
     body.dark-mode #cart {
       background: #333;
       color: #f0f0f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
     #cart h2 {
       margin-bottom: 1rem;
+      font-size: 1.3rem;
     }
     #cart-items {
       list-style: none;
-      margin-bottom: 1rem;
       padding: 0;
+      margin-bottom: 1rem;
     }
     #cart-items li {
       margin: 0.5rem 0;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    body.dark-mode #cart-items li {
+      background: rgba(60, 60, 60, 0.5);
+    }
+    .cart-item-info {
+      flex-grow: 1;
+      text-align: left;
+      padding-right: 1rem;
+      font-size: 0.9rem;
+    }
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
     .quantity-controls {
       display: flex;
@@ -298,6 +318,7 @@
     #total-price {
       font-weight: bold;
       margin-top: 1rem;
+      font-size: 1.1rem;
     }
     
     /* Bildirim Stili */
@@ -374,11 +395,23 @@
         width: 90%;
       }
       #cart {
-        padding: 1rem;
+        padding: 0.8rem;
+        margin: 1rem auto;
+      }
+      #cart h2 {
+        font-size: 1.1rem;
+      }
+      #cart-items li {
+        padding: 0.3rem;
+        font-size: 0.8rem;
       }
       .quantity-btn {
         padding: 0.1rem 0.4rem;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+      }
+      .remove-button {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
       }
     }
   </style>
@@ -682,7 +715,7 @@
       alert(`${name} sepete eklendi!`);
     }
     
-    // Sepeti Güncelleme (Birimlerle birlikte)
+    // Sepeti Güncelleme (Birimlerle birlikte, düzenli tasarım)
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
@@ -691,20 +724,21 @@
       
       cart.forEach((item, index) => {
         const li = document.createElement('li');
+        const unitText = item.unit ? ` (${item.unit})` : '';
         li.innerHTML = `
-          ${item.name} - ${item.price}₺${item.unit ? ` (${item.unit})` : ''} x 
-          <div class="quantity-controls">
-            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
-            <span>${item.quantity}</span>
-            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+          <div class="cart-item-info">
+            ${item.name} - <span class="price">${item.price}₺${unitText}</span>
           </div>
-          = ${(item.price * item.quantity)}₺
+          <div class="cart-item-quantity">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+              <span>${item.quantity}</span>
+              <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+            </div>
+            <span class="total-item-price">${(item.price * item.quantity)}₺</span>
+          </div>
+          <button class="remove-button" onclick="removeFromCart(${index})">Sil</button>
         `;
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = "Sil";
-        removeBtn.classList.add("remove-button");
-        removeBtn.onclick = () => removeFromCart(index);
-        li.appendChild(removeBtn);
         cartItems.appendChild(li);
         total += item.price * item.quantity;
         
