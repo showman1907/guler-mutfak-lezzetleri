@@ -786,12 +786,15 @@
         total += item.price * item.quantity;
       });
       
-      // Toplam fiyat ve birimleri göster
+      // Toplam fiyat ve birimleri göster (paylaşılan görsel gibi düzenli)
       let unitsText = '';
       if (totalUnits.kg > 0) unitsText += `${totalUnits.kg} kg `;
       if (totalUnits.tepsi > 0) unitsText += `${totalUnits.tepsi} tepsi `;
       for (let unit in totalUnits.adet) {
-        if (totalUnits.adet[unit] > 0) unitsText += `${totalUnits.adet[unit]} ${unit} `;
+        if (totalUnits.adet[unit] > 0) {
+          const adetCount = parseInt(unit.split(' ')[0]) || 1;
+          unitsText += `${totalUnits.adet[unit] / adetCount} ${unit} `;
+        }
       }
       document.getElementById('total-price').textContent = `Toplam: ${total}₺${unitsText ? ` (${unitsText.trim()})` : ''}`;
     }
@@ -852,7 +855,7 @@
         alert("Sepetiniz boş, sipariş veremezsiniz!");
         return;
       }
-      let message = "Merhama, siparişim:\n";
+      let message = "Merhaba, siparişim:\n";
       cart.forEach(item => {
         let unitText = '';
         if (item.unit && item.unit.includes('adet')) {
