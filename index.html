@@ -272,6 +272,8 @@
       text-align: center;
       margin: 2rem auto;
       padding-bottom: 2rem;
+      position: relative;
+      z-index: 500; /* Sepetin üstünde kalması için */
     }
     #contact h2 {
       margin-bottom: 1rem;
@@ -315,8 +317,12 @@
         width: 100%;
         right: 0;
         top: auto;
-        bottom: 0;
-        max-height: 50vh;
+        bottom: 150px; /* İletişim bölümünün üstünde kalması için */
+        max-height: 40vh;
+        z-index: 1000;
+      }
+      #contact {
+        padding-bottom: 150px; /* Sepetin altında boşluk bırakır */
       }
       .controls input, .controls select {
         width: 90%;
@@ -347,6 +353,7 @@
       <option value="all">Tüm Ürünler</option>
       <option value="tatli">Tatlılar</option>
       <option value="tuzlu">Tuzlular</option>
+      <option value="yemek">Yemekler</option>
     </select>
   </div>
 
@@ -493,7 +500,7 @@
     </div>
 
     <!-- Zeytinyağlı Sarma -->
-    <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530" data-category="tuzlu">
+    <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530" data-category="yemek">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA">
@@ -513,7 +520,7 @@
     </div>
 
     <!-- Etli Yaprak Sarma -->
-    <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650" data-category="tuzlu">
+    <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650" data-category="yemek">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/etli_yaprak_sarma.jpg" alt="ETLİ YAPRAK SARMA">
