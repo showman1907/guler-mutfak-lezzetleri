@@ -215,6 +215,24 @@
       align-items: center;
       justify-content: space-between;
     }
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .quantity-btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .quantity-btn:hover {
+      background: #2980b9;
+    }
     .remove-button {
       background: #e74c3c;
       border: none;
@@ -301,6 +319,13 @@
       }
       .controls input, .controls select {
         width: 90%;
+      }
+      #cart {
+        padding: 1rem;
+      }
+      .quantity-btn {
+        padding: 0.1rem 0.4rem;
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -572,33 +597,39 @@
       });
     });
 
-    // Sepete Ekleme
+    // Sepete Ekleme (Miktar sormadan)
     function addToCart(e, button) {
       e.stopPropagation();
       const card = button.closest('.flip-card');
       const name = card.getAttribute('data-name');
       const price = Number(card.getAttribute('data-price'));
-      const quantity = Number(prompt(`${name} için miktar giriniz:`, "1")) || 1;
-      if (quantity <= 0) return alert("Geçersiz miktar!");
-
+      
       const existingItem = cart.find(item => item.name === name);
       if (existingItem) {
-        existingItem.quantity += quantity;
+        existingItem.quantity += 1;
       } else {
-        cart.push({ name, price, quantity });
+        cart.push({ name, price, quantity: 1 });
       }
       updateCart();
-      alert(`${quantity} adet ${name} sepete eklendi!`);
+      alert(`${name} sepete eklendi!`);
     }
     
-    // Sepeti Güncelleme
+    // Sepeti Güncelleme (Miktar kontrolü burada)
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
       let total = 0;
       cart.forEach((item, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `${item.name} - ${item.price}₺ x ${item.quantity} = ${(item.price * item.quantity)}₺`;
+        li.innerHTML = `
+          ${item.name} - ${item.price}₺ x 
+          <div class="quantity-controls">
+            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+            <span>${item.quantity}</span>
+            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+          </div>
+          = ${(item.price * item.quantity)}₺
+        `;
         const removeBtn = document.createElement('button');
         removeBtn.textContent = "Sil";
         removeBtn.classList.add("remove-button");
@@ -608,6 +639,22 @@
         total += item.price * item.quantity;
       });
       document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
+    }
+    
+    // Miktar Artırma
+    function increaseQuantity(index) {
+      cart[index].quantity += 1;
+      updateCart();
+    }
+    
+    // Miktar Azaltma
+    function decreaseQuantity(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+      } else {
+        removeFromCart(index);
+      }
+      updateCart();
     }
     
     // Sepetten Kaldırma
