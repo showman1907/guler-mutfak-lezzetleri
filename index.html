@@ -588,6 +588,11 @@
   <script>
     let cart = [];
     
+    // Sayfa açıldığında en üste kaydır
+    window.onload = function() {
+      window.scrollTo(0, 0);
+    };
+    
     // Flip Kart Tıklama
     document.querySelectorAll('.flip-card').forEach(card => {
       card.addEventListener('click', function(e) {
@@ -684,7 +689,7 @@
         });
     }
     
-    // Sipariş Ver
+    // Sipariş Ver (Instagram sayfasına yönlendirme)
     function placeOrder() {
       if (cart.length === 0) {
         alert("Sepetiniz boş, sipariş veremezsiniz!");
@@ -695,7 +700,7 @@
         message += `${item.name} - ${item.price}₺ x ${item.quantity} adet\n`;
       });
       const encodedMessage = encodeURIComponent(message);
-      window.open(`https://www.instagram.com/direct/t/guler_mutfak_lezzetleri/?text=${encodedMessage}`, "_blank");
+      window.open(`https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==&text=${encodedMessage}`, "_blank");
     }
     
     // Bildirim Gösterme
