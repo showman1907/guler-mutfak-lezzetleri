@@ -42,7 +42,7 @@
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
     
-    /* Dönen Arka Plan İkonları */
+    /* Arka Plan İkonları */
     .background-icons {
       position: fixed;
       top: 0;
@@ -62,7 +62,7 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    /* 7 farklı ikon (Sizin paylaştığınız ikonları images/ klasörüne ekleyin) */
+    /* 7 adet ikon (Kendi görsellerinizi images klasörüne ekleyin) */
     .icon1 {
       top: 5%;
       left: 10%;
@@ -79,12 +79,12 @@
       content: url("images/icon3.png");
     }
     .icon4 {
-      top: 50%;
+      top: 45%;
       left: 60%;
       content: url("images/icon4.png");
     }
     .icon5 {
-      top: 65%;
+      top: 60%;
       left: 15%;
       content: url("images/icon5.png");
     }
@@ -98,12 +98,12 @@
       left: 40%;
       content: url("images/icon7.png");
     }
-
+    
     /* Flip Kart Yapısı */
     .flip-card {
       background: transparent;
-      width: 300px;    
-      height: 400px;   
+      width: 300px;
+      height: 400px;
       perspective: 1000px;
       margin: 1rem;
       position: relative;
@@ -136,8 +136,8 @@
     }
     .flip-card-front img {
       width: 100%;
-      height: 200px;  
-      object-fit: cover; 
+      height: 200px;
+      object-fit: cover;
       border-radius: 12px;
     }
     .flip-card-front h3 {
@@ -224,7 +224,7 @@
     /* Bildirim Stili */
     #copy-notification {
       position: fixed;
-      bottom: 80px; 
+      bottom: 80px;
       left: 50%;
       transform: translateX(-50%);
       background: #27ae60;
@@ -233,6 +233,40 @@
       border-radius: 5px;
       display: none;
       z-index: 2000;
+    }
+    
+    /* Ürünler Bölümü */
+    #products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    
+    /* İletişim Bölümü */
+    #contact {
+      text-align: center;
+      margin: 2rem auto;
+    }
+    #contact h2 {
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .contact-icons img {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .contact-icons img:hover {
+      transform: scale(1.1);
     }
     
     /* Mobil Responsive Ayarlar */
@@ -251,38 +285,8 @@
         font-size: 0.9rem;
       }
       .flip-card-front img {
-        height: 150px; 
+        height: 150px;
       }
-    }
-    
-    /* Ürünler Bölümü */
-    #products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 2rem;
-      gap: 2rem;
-    }
-
-    /* İletişim Bölümü */
-    #contact {
-      text-align: center;
-      margin: 2rem auto;
-    }
-    .contact-icons {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-    .contact-icons img {
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    .contact-icons img:hover {
-      transform: scale(1.1);
     }
   </style>
 </head>
@@ -302,7 +306,7 @@
     <img class="icon7" alt="icon7">
   </div>
 
-  <!-- Ürünler Lİstesi (10 Ürün) -->
+  <!-- Ürünler Bölümü (10 Ürün) -->
   <section id="products">
     <!-- İçli Köfte -->
     <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650">
@@ -408,7 +412,7 @@
     <div class="flip-card" data-name="MAYALI POĞAÇA(SADE)" data-price="550">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/mayali_pogaca_sade.jpg" alt="MAYALI POĞAÇA(SADE)" />
+          <img src="images/mayali_pogaca_sade.jpg" alt="MAYALI POĞAÇA(SADE)">
           <h3>MAYALI POĞAÇA(SADE)</h3>
           <span>Fiyat: 550₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -428,7 +432,7 @@
     <div class="flip-card" data-name="MAYALI POĞAÇA(PEYNİRLİ)" data-price="600">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/mayali_pogaca_peynirli.jpg" alt="MAYALI POĞAÇA(PEYNİRLİ)" />
+          <img src="images/mayali_pogaca_peynirli.jpg" alt="MAYALI POĞAÇA(PEYNİRLİ)">
           <h3>MAYALI POĞAÇA(PEYNİRLİ)</h3>
           <span>Fiyat: 600₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -448,7 +452,7 @@
     <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA" />
+          <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA">
           <h3>ZEYTİNYAĞLI SARMA</h3>
           <span>Fiyat: 530₺ (1 kg)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
@@ -465,4 +469,207 @@
     </div>
 
     <!-- Etli Yaprak Sarma -->
-    <div class="flip-card" data-name="ETL
+    <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/etli_yaprak_sarma.jpg" alt="ETLİ YAPRAK SARMA">
+          <h3>ETLİ YAPRAK SARMA</h3>
+          <span>Fiyat: 650₺ (1 kg)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden enfes etli yaprak sarma! 🍖🍃<br>
+            İncecik asma yapraklarına sarılmış, kıymalı ve baharatlarla lezzetlendirilmiş, tam kıvamında pişmiş sarma lezzeti!<br>
+            Geleneksel sofralarınız için vazgeçilmez bir tat!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cup Kek -->
+    <div class="flip-card" data-name="CUP KEK" data-price="530">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/cup_kek.jpg" alt="CUP KEK">
+          <h3>CUP KEK</h3>
+          <span>Fiyat: 530₺ (24 Adet)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden nefis çikolatalı cup kek! 🍫🧁<br>
+            Yumuşacık dokusu, kakao, çikolata damlası ve ceviz parçalarıyla her lokmada mutluluk veren bu cup kekleri denemelisiniz!<br>
+            Çay ve kahve saatlerinizin vazgeçilmezi olacak!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sepet & Sipariş Bölümü -->
+  <section id="cart">
+    <h2>Sepetiniz</h2>
+    <ul id="cart-items"></ul>
+    <p id="total-price">Toplam: 0₺</p>
+    <button id="copy-cart-btn" class="button" onclick="copyCart()">Sepeti Kopyala</button>
+    <button id="order-btn" class="button" onclick="placeOrder()">Instagram Sipariş Ver</button>
+  </section>
+
+  <!-- İletişim Bölümü -->
+  <section id="contact">
+    <h2>İletişim</h2>
+    <div class="contact-icons">
+      <!-- Instagram: Tıklayınca belirttiğiniz sayfaya yönlendirir -->
+      <a href="https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==" target="_blank">
+        <img src="images/instagram_logo.png" alt="Instagram">
+      </a>
+      <!-- WhatsApp: Tıklayınca mesaj penceresi açar (E.164 formatında +905319428244) -->
+      <a href="https://wa.me/905319428244" target="_blank">
+        <img src="images/whatsapp_logo.png" alt="WhatsApp">
+      </a>
+    </div>
+  </section>
+
+  <!-- Kopyalama Bildirimi -->
+  <div id="copy-notification"></div>
+
+  <script>
+    let cart = [];
+    
+    function addToCart(e, button) {
+      e.stopPropagation();
+      const card = button.closest('.flip-card');
+      const name = card.getAttribute('data-name');
+      const price = card.getAttribute('data-price');
+      cart.push({ name, price });
+      updateCart();
+      alert(`${name} sepete eklendi!`);
+    }
+    
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price}₺`;
+        
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "Sil";
+        removeBtn.classList.add("remove-button");
+        removeBtn.onclick = () => removeFromCart(index);
+        li.appendChild(removeBtn);
+        
+        cartItems.appendChild(li);
+        total += Number(item.price);
+      });
+      document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
+    }
+    
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+    
+    function copyCart() {
+      if (cart.length === 0) {
+        alert("Sepetiniz boş, kopyalanacak bir ürün yok!");
+        return;
+      }
+      let message = "Merhaba, siparişim:\n";
+      cart.forEach(item => {
+        message += `${item.name} - ${item.price}₺\n`;
+      });
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(message)
+          .then(() => {
+            showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
+          })
+          .catch(err => {
+            console.error("Clipboard API ile kopyalama başarısız oldu, fallback deneniyor:", err);
+            fallbackCopyTextToClipboard(message)
+              .then(() => {
+                showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
+              })
+              .catch(fallbackErr => {
+                console.error("Fallback kopyalama işlemi başarısız oldu:", fallbackErr);
+                alert("Kopyalama işlemi başarısız oldu.");
+              });
+          });
+      } else {
+        fallbackCopyTextToClipboard(message)
+          .then(() => {
+            showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
+          })
+          .catch(err => {
+            console.error("Fallback kopyalama işlemi başarısız oldu:", err);
+            alert("Kopyalama işlemi başarısız oldu.");
+          });
+      }
+    }
+    
+    function fallbackCopyTextToClipboard(text) {
+      return new Promise(function(resolve, reject) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          const successful = document.execCommand('copy');
+          document.body.removeChild(textArea);
+          if (successful) {
+            resolve();
+          } else {
+            reject("execCommand ile kopyalama başarısız oldu.");
+          }
+        } catch (err) {
+          document.body.removeChild(textArea);
+          reject(err);
+        }
+      });
+    }
+    
+    function showCopyNotification(message) {
+      const notification = document.getElementById('copy-notification');
+      notification.textContent = message;
+      notification.style.display = "block";
+      setTimeout(() => {
+        notification.style.display = "none";
+      }, 5000);
+    }
+    
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert("Sepetiniz boş, sipariş veremezsiniz!");
+        return;
+      }
+      let message = "Merhaba, siparişim:\n";
+      cart.forEach(item => {
+        message += `${item.name} - ${item.price}₺\n`;
+      });
+      const encodedMessage = encodeURIComponent(message);
+      
+      if (window.innerWidth < 768) {
+        window.open("https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==", "_blank");
+      } else {
+        window.open(`https://www.instagram.com/m/guler_mutfak_lezzetleri/?text=${encodedMessage}`, "_blank");
+      }
+    }
+    
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.target.tagName.toLowerCase() !== 'button') {
+          this.querySelector('.flip-card-inner').classList.toggle('flipped');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
