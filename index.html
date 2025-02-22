@@ -51,20 +51,18 @@
       background: rgba(200, 100, 50, 0.8);
     }
     
-    /* Karanlık Mod Butonu */
+    /* Karanlık Mod Butonu (Eski Tasarım) */
     #theme-toggle {
-      position: absolute;
-      top: 10px;
-      right: 10px;
       padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       background: #27ae60;
       color: white;
       border: none;
-      border-radius: 20px;
+      border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin-left: 1rem;
     }
     #theme-toggle:hover {
       background: #1e8449;
@@ -410,10 +408,9 @@
         padding: 0.6rem 1rem;
       }
       #theme-toggle {
-        top: 5px;
-        right: 5px;
         padding: 0.3rem 0.6rem;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
       }
       .button {
         padding: 0.65rem 1.2rem;
@@ -450,10 +447,8 @@
 <body>
   <header>
     🍰 Güler Mutfak Lezzetleri 🍽️
+    <button id="theme-toggle" class="button" onclick="toggleTheme()">Karanlık Mod</button>
   </header>
-
-  <!-- Karanlık Mod Butonu -->
-  <button id="theme-toggle" class="button" onclick="toggleTheme()">Karanlık Mod</button>
 
   <!-- Arka Plan İkonları -->
   <div class="background-icons">
@@ -748,12 +743,11 @@
       alert(`${name} sepete eklendi!`);
     }
     
-    // Sepeti Güncelleme (Birimlerle birlikte, düzenli tasarım)
+    // Sepeti Güncelleme (Birim olmadan toplam)
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
       let total = 0;
-      let totalUnits = { kg: 0, tepsi: 0, adet: {} };
       
       cart.forEach((item, index) => {
         const li = document.createElement('li');
@@ -761,12 +755,8 @@
         if (item.unit && item.unit.includes('adet')) {
           const adetCount = parseInt(item.unit.split(' ')[0]) || 1;
           unitText = ` (${item.unit})`;
-          if (!totalUnits.adet[item.unit]) totalUnits.adet[item.unit] = 0;
-          totalUnits.adet[item.unit] += item.quantity * adetCount;
         } else if (item.unit) {
           unitText = ` (${item.unit})`;
-          if (item.unit === 'kg') totalUnits.kg += item.quantity;
-          else if (item.unit === 'tepsi') totalUnits.tepsi += item.quantity;
         }
         li.innerHTML = `
           <div class="cart-item-info">
@@ -786,17 +776,8 @@
         total += item.price * item.quantity;
       });
       
-      // Toplam fiyat ve birimleri göster (paylaşılan görsel gibi düzenli)
-      let unitsText = '';
-      if (totalUnits.kg > 0) unitsText += `${totalUnits.kg} kg `;
-      if (totalUnits.tepsi > 0) unitsText += `${totalUnits.tepsi} tepsi `;
-      for (let unit in totalUnits.adet) {
-        if (totalUnits.adet[unit] > 0) {
-          const adetCount = parseInt(unit.split(' ')[0]) || 1;
-          unitsText += `${totalUnits.adet[unit] / adetCount} ${unit} `;
-        }
-      }
-      document.getElementById('total-price').textContent = `Toplam: ${total}₺${unitsText ? ` (${unitsText.trim()})` : ''}`;
+      // Sadece toplam fiyat göster
+      document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
     }
     
     // Miktar Artırma
