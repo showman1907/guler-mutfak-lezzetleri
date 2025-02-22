@@ -51,7 +51,7 @@
       background: rgba(200, 100, 50, 0.8);
     }
     
-    /* Karanlık Mod Butonu (Eski Tasarım) */
+    /* Karanlık Mod Butonu */
     #theme-toggle {
       padding: 0.4rem 0.8rem;
       font-size: 0.9rem;
@@ -94,6 +94,7 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    /* 7 adet ikon (Kendi görsellerinizi images/ klasörüne ekleyin) */
     .icon1 { top: 5%; left: 10%; content: url("images/icon1.png"); }
     .icon2 { top: 15%; left: 80%; content: url("images/icon2.png"); }
     .icon3 { top: 30%; left: 25%; content: url("images/icon3.png"); }
@@ -446,7 +447,7 @@
 </head>
 <body>
   <header>
-    🍰 Güler Mutfak Lezzetleri 🍽️
+    🍰 Güler Mutfak Lezzetleri
     <button id="theme-toggle" class="button" onclick="toggleTheme()">Karanlık Mod</button>
   </header>
 
@@ -688,14 +689,21 @@
   <section id="contact">
     <h2>İletişim</h2>
     <div class="contact-icons">
+      <!-- Instagram -->
       <a href="https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==" target="_blank">
         <img src="images/instagram_logo.png" alt="Instagram">
       </a>
+      <!-- WhatsApp -->
       <a href="https://wa.me/905319428244" target="_blank">
         <img src="images/whatsapp_logo.png" alt="WhatsApp">
       </a>
     </div>
   </section>
+
+  <!-- Ziyaretçi Sayısı Bölümü -->
+  <footer id="visitor-footer" style="text-align:center; padding: 1rem; font-size: 0.9rem;">
+    Ziyaretçi Sayısı: <span id="visitor-count">0</span>
+  </footer>
 
   <!-- Kopyalama Bildirimi -->
   <div id="copy-notification"></div>
@@ -706,6 +714,13 @@
     // Sayfa açıldığında en üste kaydır
     window.onload = function() {
       window.scrollTo(0, 0);
+      // Ziyaretçi sayısını güncelle (CountAPI kullanarak)
+      fetch("https://api.countapi.xyz/hit/guler-mutfak/visits")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("visitor-count").textContent = data.value;
+        })
+        .catch(err => console.error("Ziyaretçi sayısı alınamadı:", err));
     };
     
     // Tema Değiştirme
@@ -724,7 +739,7 @@
         }
       });
     });
-
+    
     // Sepete Ekleme
     function addToCart(e, button) {
       e.stopPropagation();
@@ -743,21 +758,14 @@
       alert(`${name} sepete eklendi!`);
     }
     
-    // Sepeti Güncelleme (Birim olmadan toplam)
+    // Sepeti Güncelleme
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
       let total = 0;
-      
       cart.forEach((item, index) => {
         const li = document.createElement('li');
-        let unitText = '';
-        if (item.unit && item.unit.includes('adet')) {
-          const adetCount = parseInt(item.unit.split(' ')[0]) || 1;
-          unitText = ` (${item.unit})`;
-        } else if (item.unit) {
-          unitText = ` (${item.unit})`;
-        }
+        let unitText = item.unit ? ` (${item.unit})` : '';
         li.innerHTML = `
           <div class="cart-item-info">
             ${item.name} - <span class="price">${item.price}₺${unitText}</span>
@@ -775,8 +783,6 @@
         cartItems.appendChild(li);
         total += item.price * item.quantity;
       });
-      
-      // Sadece toplam fiyat göster
       document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
     }
     
@@ -848,7 +854,11 @@
         message += `${item.name} - ${item.price}₺ x ${item.quantity} ${unitText || 'adet'}\n`;
       });
       const encodedMessage = encodeURIComponent(message);
-      window.open(`https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==&text=${encodedMessage}`, "_blank");
+      if (window.innerWidth < 768) {
+        window.open("https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==", "_blank");
+      } else {
+        window.open(`https://www.instagram.com/m/guler_mutfak_lezzetleri/?text=${encodedMessage}`, "_blank");
+      }
     }
     
     // Bildirim Gösterme
