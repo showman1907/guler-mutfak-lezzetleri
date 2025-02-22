@@ -24,7 +24,7 @@
       overflow-x: hidden;
       position: relative;
     }
-    
+
     /* Başlık */
     header {
       background: rgba(255, 145, 77, 0.8);
@@ -41,7 +41,7 @@
       letter-spacing: 2px;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
-    
+
     /* Arka Plan İkonları */
     .background-icons {
       position: fixed;
@@ -55,50 +55,43 @@
     }
     .background-icons img {
       position: absolute;
-      width: 100px;
-      animation: rotate 10s linear infinite;
+      width: 80px;
+      animation: float 15s infinite ease-in-out;
     }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes float {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(20px, -30px) rotate(90deg); }
+      50% { transform: translate(-10px, 20px) rotate(180deg); }
+      75% { transform: translate(30px, 10px) rotate(270deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
     }
-    /* 7 adet ikon (Kendi görsellerinizi images klasörüne ekleyin) */
-    .icon1 {
-      top: 5%;
-      left: 10%;
-      content: url("images/icon1.png");
+    .icon1 { top: 5%; left: 10%; animation-delay: 0s; }
+    .icon2 { top: 15%; left: 80%; animation-delay: 2s; }
+    .icon3 { top: 30%; left: 25%; animation-delay: 4s; }
+    .icon4 { top: 45%; left: 60%; animation-delay: 6s; }
+    .icon5 { top: 60%; left: 15%; animation-delay: 8s; }
+    .icon6 { top: 75%; left: 70%; animation-delay: 10s; }
+    .icon7 { top: 85%; left: 40%; animation-delay: 12s; }
+
+    /* Kontroller (Arama ve Filtre) */
+    .controls {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      margin: 1rem auto;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .icon2 {
-      top: 15%;
-      left: 80%;
-      content: url("images/icon2.png");
+    .controls input, .controls select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 200px;
     }
-    .icon3 {
-      top: 30%;
-      left: 25%;
-      content: url("images/icon3.png");
-    }
-    .icon4 {
-      top: 45%;
-      left: 60%;
-      content: url("images/icon4.png");
-    }
-    .icon5 {
-      top: 60%;
-      left: 15%;
-      content: url("images/icon5.png");
-    }
-    .icon6 {
-      top: 75%;
-      left: 70%;
-      content: url("images/icon6.png");
-    }
-    .icon7 {
-      top: 85%;
-      left: 40%;
-      content: url("images/icon7.png");
-    }
-    
+
     /* Flip Kart Yapısı */
     .flip-card {
       background: transparent;
@@ -108,6 +101,12 @@
       margin: 1rem;
       position: relative;
       cursor: pointer;
+      opacity: 0;
+      animation: fadeInUp 0.5s ease forwards;
+      transition: transform 0.3s ease;
+    }
+    .flip-card:hover {
+      transform: scale(1.05);
     }
     .flip-card-inner {
       position: relative;
@@ -162,7 +161,23 @@
       font-size: 0.9rem;
       line-height: 1.4;
     }
-    
+
+    /* Ürün Yükleme Animasyonu */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    #products .flip-card:nth-child(1) { animation-delay: 0.1s; }
+    #products .flip-card:nth-child(2) { animation-delay: 0.2s; }
+    #products .flip-card:nth-child(3) { animation-delay: 0.3s; }
+    #products .flip-card:nth-child(4) { animation-delay: 0.4s; }
+    #products .flip-card:nth-child(5) { animation-delay: 0.5s; }
+    #products .flip-card:nth-child(6) { animation-delay: 0.6s; }
+    #products .flip-card:nth-child(7) { animation-delay: 0.7s; }
+    #products .flip-card:nth-child(8) { animation-delay: 0.8s; }
+    #products .flip-card:nth-child(9) { animation-delay: 0.9s; }
+    #products .flip-card:nth-child(10) { animation-delay: 1s; }
+
     /* Buton Stilleri */
     .button {
       background: #27ae60;
@@ -178,16 +193,24 @@
     .button:hover {
       background: #1e8449;
     }
-    
+
     /* Sepet & Sipariş Bölümü */
     #cart {
+      position: fixed;
+      right: 20px;
+      top: 100px;
+      width: 300px;
+      max-height: 70vh;
+      overflow-y: auto;
       background: #fff;
-      padding: 1rem 2rem;
-      margin: 2rem auto;
-      max-width: 500px;
+      padding: 1rem;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      text-align: center;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    #cart.hidden {
+      transform: translateX(320px);
     }
     #cart h2 {
       margin-bottom: 1rem;
@@ -220,7 +243,7 @@
       font-weight: bold;
       margin-top: 1rem;
     }
-    
+
     /* Bildirim Stili */
     #copy-notification {
       position: fixed;
@@ -234,7 +257,7 @@
       display: none;
       z-index: 2000;
     }
-    
+
     /* Ürünler Bölümü */
     #products {
       display: flex;
@@ -243,11 +266,12 @@
       padding: 2rem;
       gap: 2rem;
     }
-    
+
     /* İletişim Bölümü */
     #contact {
       text-align: center;
       margin: 2rem auto;
+      padding-bottom: 2rem;
     }
     #contact h2 {
       margin-bottom: 1rem;
@@ -268,7 +292,7 @@
     .contact-icons img:hover {
       transform: scale(1.1);
     }
-    
+
     /* Mobil Responsive Ayarlar */
     @media (max-width: 768px) {
       .flip-card {
@@ -287,6 +311,16 @@
       .flip-card-front img {
         height: 150px;
       }
+      #cart {
+        width: 100%;
+        right: 0;
+        top: auto;
+        bottom: 0;
+        max-height: 50vh;
+      }
+      .controls input, .controls select {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -297,19 +331,29 @@
 
   <!-- Arka Plan İkonları -->
   <div class="background-icons">
-    <img class="icon1" alt="icon1">
-    <img class="icon2" alt="icon2">
-    <img class="icon3" alt="icon3">
-    <img class="icon4" alt="icon4">
-    <img class="icon5" alt="icon5">
-    <img class="icon6" alt="icon6">
-    <img class="icon7" alt="icon7">
+    <img class="icon1" src="images/icon1.png" alt="icon1">
+    <img class="icon2" src="images/icon2.png" alt="icon2">
+    <img class="icon3" src="images/icon3.png" alt="icon3">
+    <img class="icon4" src="images/icon4.png" alt="icon4">
+    <img class="icon5" src="images/icon5.png" alt="icon5">
+    <img class="icon6" src="images/icon6.png" alt="icon6">
+    <img class="icon7" src="images/icon7.png" alt="icon7">
+  </div>
+
+  <!-- Kontroller (Arama ve Filtre) -->
+  <div class="controls">
+    <input type="text" id="search-bar" placeholder="Ürün ara...">
+    <select id="category-filter">
+      <option value="all">Tüm Ürünler</option>
+      <option value="tatli">Tatlılar</option>
+      <option value="tuzlu">Tuzlular</option>
+    </select>
   </div>
 
   <!-- Ürünler Bölümü (10 Ürün) -->
   <section id="products">
     <!-- İçli Köfte -->
-    <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650">
+    <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650" data-category="tuzlu">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/icli_kofte.jpg" alt="İÇLİ KÖFTE(DIŞI ETSİZ)">
@@ -327,9 +371,9 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Saray Sarması -->
-    <div class="flip-card" data-name="SARAY SARMASI" data-price="550">
+    <div class="flip-card" data-name="SARAY SARMASI" data-price="550" data-category="tatli">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/saray_sarmasi.jpg" alt="SARAY SARMASI">
@@ -347,9 +391,9 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Profiterol -->
-    <div class="flip-card" data-name="PROFİTEROL" data-price="470">
+    <div class="flip-card" data-name="PROFİTEROL" data-price="470" data-category="tatli">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/profiterol.jpg" alt="PROFİTEROL">
@@ -367,9 +411,9 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Acılı Ekmek (Hatay Usulü) -->
-    <div class="flip-card" data-name="ACILI EKMEK(HATAY USULÜ)" data-price="600">
+    <div class="flip-card" data-name="ACILI EKMEK(HATAY USULÜ)" data-price="600" data-category="tuzlu">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/acili_ekmek.jpg" alt="ACILI EKMEK(HATAY USULÜ)">
@@ -389,7 +433,7 @@
     </div>
 
     <!-- Elmalı Kurabiye -->
-    <div class="flip-card" data-name="ELMALI KURABİYE" data-price="550">
+    <div class="flip-card" data-name="ELMALI KURABİYE" data-price="550" data-category="tatli">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/elmali_kurabiye.jpg" alt="ELMALI KURABİYE">
@@ -409,7 +453,7 @@
     </div>
 
     <!-- Mayalı Poğaça (Sade) -->
-    <div class="flip-card" data-name="MAYALI POĞAÇA(SADE)" data-price="550">
+    <div class="flip-card" data-name="MAYALI POĞAÇA(SADE)" data-price="550" data-category="tuzlu">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/mayali_pogaca_sade.jpg" alt="MAYALI POĞAÇA(SADE)">
@@ -429,7 +473,7 @@
     </div>
 
     <!-- Mayalı Poğaça (Peynirli) -->
-    <div class="flip-card" data-name="MAYALI POĞAÇA(PEYNİRLİ)" data-price="600">
+    <div class="flip-card" data-name="MAYALI POĞAÇA(PEYNİRLİ)" data-price="600" data-category="tuzlu">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/mayali_pogaca_peynirli.jpg" alt="MAYALI POĞAÇA(PEYNİRLİ)">
@@ -449,7 +493,7 @@
     </div>
 
     <!-- Zeytinyağlı Sarma -->
-    <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530">
+    <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530" data-category="tuzlu">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA">
@@ -469,7 +513,7 @@
     </div>
 
     <!-- Etli Yaprak Sarma -->
-    <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650">
+    <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650" data-category="tuzlu">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/etli_yaprak_sarma.jpg" alt="ETLİ YAPRAK SARMA">
@@ -489,7 +533,7 @@
     </div>
 
     <!-- Cup Kek -->
-    <div class="flip-card" data-name="CUP KEK" data-price="530">
+    <div class="flip-card" data-name="CUP KEK" data-price="530" data-category="tatli">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/cup_kek.jpg" alt="CUP KEK">
@@ -522,11 +566,9 @@
   <section id="contact">
     <h2>İletişim</h2>
     <div class="contact-icons">
-      <!-- Instagram: Tıklayınca belirttiğiniz sayfaya yönlendirir -->
       <a href="https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==" target="_blank">
         <img src="images/instagram_logo.png" alt="Instagram">
       </a>
-      <!-- WhatsApp: Tıklayınca mesaj penceresi açar (E.164 formatında +905319428244) -->
       <a href="https://wa.me/905319428244" target="_blank">
         <img src="images/whatsapp_logo.png" alt="WhatsApp">
       </a>
@@ -538,104 +580,88 @@
 
   <script>
     let cart = [];
-    
+
+    // Flip Kart Tıklama
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.target.tagName.toLowerCase() !== 'button') {
+          this.querySelector('.flip-card-inner').classList.toggle('flipped');
+        }
+      });
+    });
+
+    // Sepete Ekleme
     function addToCart(e, button) {
       e.stopPropagation();
       const card = button.closest('.flip-card');
       const name = card.getAttribute('data-name');
-      const price = card.getAttribute('data-price');
-      cart.push({ name, price });
+      const price = Number(card.getAttribute('data-price'));
+      const quantity = Number(prompt(`${name} için miktar giriniz:`, "1")) || 1;
+      if (quantity <= 0) return alert("Geçersiz miktar!");
+
+      const existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        cart.push({ name, price, quantity });
+      }
       updateCart();
-      alert(`${name} sepete eklendi!`);
+      alert(`${quantity} adet ${name} sepete eklendi!`);
     }
-    
+
+    // Sepeti Güncelleme
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
       let total = 0;
       cart.forEach((item, index) => {
         const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.price}₺`;
-        
+        li.innerHTML = `${item.name} - ${item.price}₺ x ${item.quantity} = ${(item.price * item.quantity)}₺`;
         const removeBtn = document.createElement('button');
         removeBtn.textContent = "Sil";
         removeBtn.classList.add("remove-button");
         removeBtn.onclick = () => removeFromCart(index);
         li.appendChild(removeBtn);
-        
         cartItems.appendChild(li);
-        total += Number(item.price);
+        total += item.price * item.quantity;
       });
       document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
     }
-    
+
+    // Sepetten Kaldırma
     function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-    
-    function copyCart() {
-      if (cart.length === 0) {
-        alert("Sepetiniz boş, kopyalanacak bir ürün yok!");
-        return;
+      if (confirm(`${cart[index].name} sepetten kaldırılsın mı?`)) {
+        cart.splice(index, 1);
+        updateCart();
       }
+    }
+
+    // Sepeti Kopyala
+    function copyCart() {
+      if (cart.length === 0) return alert("Sepetiniz boş!");
       let message = "Merhaba, siparişim:\n";
       cart.forEach(item => {
-        message += `${item.name} - ${item.price}₺\n`;
+        message += `${item.name} - ${item.price}₺ x ${item.quantity} adet\n`;
       });
-      
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(message)
-          .then(() => {
-            showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
-          })
-          .catch(err => {
-            console.error("Clipboard API ile kopyalama başarısız oldu, fallback deneniyor:", err);
-            fallbackCopyTextToClipboard(message)
-              .then(() => {
-                showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
-              })
-              .catch(fallbackErr => {
-                console.error("Fallback kopyalama işlemi başarısız oldu:", fallbackErr);
-                alert("Kopyalama işlemi başarısız oldu.");
-              });
-          });
-      } else {
-        fallbackCopyTextToClipboard(message)
-          .then(() => {
-            showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
-          })
-          .catch(err => {
-            console.error("Fallback kopyalama işlemi başarısız oldu:", err);
-            alert("Kopyalama işlemi başarısız oldu.");
-          });
-      }
-    }
-    
-    function fallbackCopyTextToClipboard(text) {
-      return new Promise(function(resolve, reject) {
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-        textArea.style.position = "fixed";
-        textArea.style.opacity = "0";
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        try {
-          const successful = document.execCommand('copy');
-          document.body.removeChild(textArea);
-          if (successful) {
-            resolve();
-          } else {
-            reject("execCommand ile kopyalama başarısız oldu.");
-          }
-        } catch (err) {
-          document.body.removeChild(textArea);
-          reject(err);
-        }
+      navigator.clipboard.writeText(message).then(() => {
+        showCopyNotification("Sepetiniz kopyalandı!");
+      }).catch(() => {
+        alert("Kopyalama başarısız, lütfen manuel kopyalayın.");
       });
     }
-    
+
+    // Sipariş Ver
+    function placeOrder() {
+      if (cart.length === 0) return alert("Sepetiniz boş!");
+      let message = "Merhaba, siparişim:\n";
+      cart.forEach(item => {
+        message += `${item.name} - ${item.price}₺ x ${item.quantity} adet\n`;
+      });
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://www.instagram.com/direct/t/guler_mutfak_lezzetleri/?text=${encodedMessage}`, "_blank");
+    }
+
+    // Bildirim Gösterme
     function showCopyNotification(message) {
       const notification = document.getElementById('copy-notification');
       notification.textContent = message;
@@ -644,32 +670,28 @@
         notification.style.display = "none";
       }, 5000);
     }
-    
-    function placeOrder() {
-      if (cart.length === 0) {
-        alert("Sepetiniz boş, sipariş veremezsiniz!");
-        return;
-      }
-      let message = "Merhaba, siparişim:\n";
-      cart.forEach(item => {
-        message += `${item.name} - ${item.price}₺\n`;
+
+    // Arama ve Filtreleme
+    const searchBar = document.getElementById('search-bar');
+    const categoryFilter = document.getElementById('category-filter');
+    const products = document.querySelectorAll('.flip-card');
+
+    function filterProducts() {
+      const searchText = searchBar.value.toLowerCase();
+      const category = categoryFilter.value;
+
+      products.forEach(product => {
+        const name = product.getAttribute('data-name').toLowerCase();
+        const productCategory = product.getAttribute('data-category');
+        const matchesSearch = name.includes(searchText);
+        const matchesCategory = category === 'all' || productCategory === category;
+
+        product.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
       });
-      const encodedMessage = encodeURIComponent(message);
-      
-      if (window.innerWidth < 768) {
-        window.open("https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==", "_blank");
-      } else {
-        window.open(`https://www.instagram.com/m/guler_mutfak_lezzetleri/?text=${encodedMessage}`, "_blank");
-      }
     }
-    
-    document.querySelectorAll('.flip-card').forEach(card => {
-      card.addEventListener('click', function(e) {
-        if (e.target.tagName.toLowerCase() !== 'button') {
-          this.querySelector('.flip-card-inner').classList.toggle('flipped');
-        }
-      });
-    });
+
+    searchBar.addEventListener('input', filterProducts);
+    categoryFilter.addEventListener('change', filterProducts);
   </script>
 </body>
 </html>
