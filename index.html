@@ -51,6 +51,31 @@
       background: rgba(200, 100, 50, 0.8);
     }
     
+    /* Karanlık Mod Butonu */
+    #theme-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    #theme-toggle:hover {
+      background: #1e8449;
+    }
+    body.dark-mode #theme-toggle {
+      background: #1e8449;
+    }
+    body.dark-mode #theme-toggle:hover {
+      background: #27ae60;
+    }
+    
     /* Arka Plan İkonları */
     .background-icons {
       position: fixed;
@@ -384,6 +409,12 @@
         font-size: 1.3rem;
         padding: 0.6rem 1rem;
       }
+      #theme-toggle {
+        top: 5px;
+        right: 5px;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+      }
       .button {
         padding: 0.65rem 1.2rem;
         font-size: 0.9rem;
@@ -419,8 +450,10 @@
 <body>
   <header>
     🍰 Güler Mutfak Lezzetleri 🍽️
-    <button id="theme-toggle" class="button" onclick="toggleTheme()">Karanlık Mod</button>
   </header>
+
+  <!-- Karanlık Mod Butonu -->
+  <button id="theme-toggle" class="button" onclick="toggleTheme()">Karanlık Mod</button>
 
   <!-- Arka Plan İkonları -->
   <div class="background-icons">
@@ -627,7 +660,7 @@
     </div>
 
     <!-- Cup Kek -->
-    <div class="flip-card" data-name="CUP KEK" data-price="530" data-category="tatli" data-unit="adet">
+    <div class="flip-card" data-name="CUP KEK" data-price="530" data-category="tatli" data-unit="24 adet">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/cup_kek.jpg" alt="CUP KEK">
@@ -720,11 +753,21 @@
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
       let total = 0;
-      let totalUnits = { kg: 0, tepsi: 0, adet: 0 };
+      let totalUnits = { kg: 0, tepsi: 0, adet: {} };
       
       cart.forEach((item, index) => {
         const li = document.createElement('li');
-        const unitText = item.unit ? ` (${item.unit})` : '';
+        let unitText = '';
+        if (item.unit && item.unit.includes('adet')) {
+          const adetCount = parseInt(item.unit.split(' ')[0]) || 1;
+          unitText = ` (${item.unit})`;
+          if (!totalUnits.adet[item.unit]) totalUnits.adet[item.unit] = 0;
+          totalUnits.adet[item.unit] += item.quantity * adetCount;
+        } else if (item.unit) {
+          unitText = ` (${item.unit})`;
+          if (item.unit === 'kg') totalUnits.kg += item.quantity;
+          else if (item.unit === 'tepsi') totalUnits.tepsi += item.quantity;
+        }
         li.innerHTML = `
           <div class="cart-item-info">
             ${item.name} - <span class="price">${item.price}₺${unitText}</span>
@@ -741,18 +784,15 @@
         `;
         cartItems.appendChild(li);
         total += item.price * item.quantity;
-        
-        // Birim toplamlarını hesapla
-        if (item.unit === 'kg') totalUnits.kg += item.quantity;
-        else if (item.unit === 'tepsi') totalUnits.tepsi += item.quantity;
-        else if (item.unit === 'adet') totalUnits.adet += item.quantity;
       });
       
       // Toplam fiyat ve birimleri göster
       let unitsText = '';
       if (totalUnits.kg > 0) unitsText += `${totalUnits.kg} kg `;
       if (totalUnits.tepsi > 0) unitsText += `${totalUnits.tepsi} tepsi `;
-      if (totalUnits.adet > 0) unitsText += `${totalUnits.adet} adet`;
+      for (let unit in totalUnits.adet) {
+        if (totalUnits.adet[unit] > 0) unitsText += `${totalUnits.adet[unit]} ${unit} `;
+      }
       document.getElementById('total-price').textContent = `Toplam: ${total}₺${unitsText ? ` (${unitsText.trim()})` : ''}`;
     }
     
@@ -788,7 +828,14 @@
       }
       let message = "Merhaba, siparişim:\n";
       cart.forEach(item => {
-        message += `${item.name} - ${item.price}₺ x ${item.quantity} ${item.unit || 'adet'}\n`;
+        let unitText = '';
+        if (item.unit && item.unit.includes('adet')) {
+          const adetCount = parseInt(item.unit.split(' ')[0]) || 1;
+          unitText = `${adetCount} ${item.unit}`;
+        } else if (item.unit) {
+          unitText = item.unit;
+        }
+        message += `${item.name} - ${item.price}₺ x ${item.quantity} ${unitText || 'adet'}\n`;
       });
       navigator.clipboard.writeText(message)
         .then(() => {
@@ -805,9 +852,16 @@
         alert("Sepetiniz boş, sipariş veremezsiniz!");
         return;
       }
-      let message = "Merhaba, siparişim:\n";
+      let message = "Merhama, siparişim:\n";
       cart.forEach(item => {
-        message += `${item.name} - ${item.price}₺ x ${item.quantity} ${item.unit || 'adet'}\n`;
+        let unitText = '';
+        if (item.unit && item.unit.includes('adet')) {
+          const adetCount = parseInt(item.unit.split(' ')[0]) || 1;
+          unitText = `${adetCount} ${item.unit}`;
+        } else if (item.unit) {
+          unitText = item.unit;
+        }
+        message += `${item.name} - ${item.price}₺ x ${item.quantity} ${unitText || 'adet'}\n`;
       });
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==&text=${encodedMessage}`, "_blank");
