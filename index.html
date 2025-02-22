@@ -23,6 +23,11 @@
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: #222;
+      color: #f0f0f0;
     }
     
     /* Başlık */
@@ -40,6 +45,10 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      transition: background 0.3s;
+    }
+    body.dark-mode header {
+      background: rgba(200, 100, 50, 0.8);
     }
     
     /* Arka Plan İkonları */
@@ -79,6 +88,10 @@
       max-width: 800px;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    body.dark-mode .controls {
+      background: rgba(60, 60, 60, 0.9);
     }
     .controls input, .controls select {
       padding: 0.5rem;
@@ -87,6 +100,14 @@
       border: 1px solid #ddd;
       border-radius: 5px;
       width: 200px;
+      color: #333;
+      background: #fff;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    body.dark-mode .controls input, body.dark-mode .controls select {
+      background: #444;
+      color: #f0f0f0;
+      border-color: #666;
     }
     
     /* Flip Kart Yapısı */
@@ -129,6 +150,11 @@
       justify-content: center;
       align-items: center;
       padding: 1rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode .flip-card-front, body.dark-mode .flip-card-back {
+      background: #333;
+      color: #f0f0f0;
     }
     .flip-card-front img {
       width: 100%;
@@ -184,11 +210,17 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background 0.3s;
       margin-top: 0.5rem;
     }
     .button:hover {
       background: #1e8449;
+    }
+    body.dark-mode .button {
+      background: #1e8449;
+    }
+    body.dark-mode .button:hover {
+      background: #27ae60;
     }
     
     /* Sepet & Sipariş Bölümü */
@@ -200,6 +232,11 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode #cart {
+      background: #333;
+      color: #f0f0f0;
     }
     #cart h2 {
       margin-bottom: 1rem;
@@ -233,6 +270,12 @@
     .quantity-btn:hover {
       background: #2980b9;
     }
+    body.dark-mode .quantity-btn {
+      background: #2980b9;
+    }
+    body.dark-mode .quantity-btn:hover {
+      background: #3498db;
+    }
     .remove-button {
       background: #e74c3c;
       border: none;
@@ -245,6 +288,12 @@
     }
     .remove-button:hover {
       background: #c0392b;
+    }
+    body.dark-mode .remove-button {
+      background: #c0392b;
+    }
+    body.dark-mode .remove-button:hover {
+      background: #e74c3c;
     }
     #total-price {
       font-weight: bold;
@@ -263,6 +312,10 @@
       border-radius: 5px;
       display: none;
       z-index: 2000;
+      transition: background 0.3s;
+    }
+    body.dark-mode #copy-notification {
+      background: #1e8449;
     }
     
     /* Ürünler Bölümü */
@@ -333,6 +386,7 @@
 <body>
   <header>
     🍰 Güler Mutfak Lezzetleri 🍽️
+    <button id="theme-toggle" class="button" onclick="toggleTheme()">Karanlık Mod</button>
   </header>
 
   <!-- Arka Plan İkonları -->
@@ -360,7 +414,7 @@
   <!-- Ürünler Bölümü (10 Ürün) -->
   <section id="products">
     <!-- İçli Köfte -->
-    <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650" data-category="tuzlu">
+    <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650" data-category="tuzlu" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/icli_kofte.jpg" alt="İÇLİ KÖFTE(DIŞI ETSİZ)">
@@ -380,7 +434,7 @@
     </div>
     
     <!-- Saray Sarması -->
-    <div class="flip-card" data-name="SARAY SARMASI" data-price="550" data-category="tatli">
+    <div class="flip-card" data-name="SARAY SARMASI" data-price="550" data-category="tatli" data-unit="adet">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/saray_sarmasi.jpg" alt="SARAY SARMASI">
@@ -400,7 +454,7 @@
     </div>
     
     <!-- Profiterol -->
-    <div class="flip-card" data-name="PROFİTEROL" data-price="470" data-category="tatli">
+    <div class="flip-card" data-name="PROFİTEROL" data-price="470" data-category="tatli" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/profiterol.jpg" alt="PROFİTEROL">
@@ -420,7 +474,7 @@
     </div>
     
     <!-- Acılı Ekmek (Hatay Usulü) -->
-    <div class="flip-card" data-name="ACILI EKMEK(HATAY USULÜ)" data-price="600" data-category="tuzlu">
+    <div class="flip-card" data-name="ACILI EKMEK(HATAY USULÜ)" data-price="600" data-category="tuzlu" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/acili_ekmek.jpg" alt="ACILI EKMEK(HATAY USULÜ)">
@@ -440,7 +494,7 @@
     </div>
 
     <!-- Elmalı Kurabiye -->
-    <div class="flip-card" data-name="ELMALI KURABİYE" data-price="550" data-category="tatli">
+    <div class="flip-card" data-name="ELMALI KURABİYE" data-price="550" data-category="tatli" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/elmali_kurabiye.jpg" alt="ELMALI KURABİYE">
@@ -460,7 +514,7 @@
     </div>
 
     <!-- Mayalı Poğaça (Sade) -->
-    <div class="flip-card" data-name="MAYALI POĞAÇA(SADE)" data-price="550" data-category="tuzlu">
+    <div class="flip-card" data-name="MAYALI POĞAÇA(SADE)" data-price="550" data-category="tuzlu" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/mayali_pogaca_sade.jpg" alt="MAYALI POĞAÇA(SADE)">
@@ -480,7 +534,7 @@
     </div>
 
     <!-- Mayalı Poğaça (Peynirli) -->
-    <div class="flip-card" data-name="MAYALI POĞAÇA(PEYNİRLİ)" data-price="600" data-category="tuzlu">
+    <div class="flip-card" data-name="MAYALI POĞAÇA(PEYNİRLİ)" data-price="600" data-category="tuzlu" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/mayali_pogaca_peynirli.jpg" alt="MAYALI POĞAÇA(PEYNİRLİ)">
@@ -500,7 +554,7 @@
     </div>
 
     <!-- Zeytinyağlı Sarma -->
-    <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530" data-category="yemek">
+    <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530" data-category="yemek" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA">
@@ -520,7 +574,7 @@
     </div>
 
     <!-- Etli Yaprak Sarma -->
-    <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650" data-category="yemek">
+    <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650" data-category="yemek" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/etli_yaprak_sarma.jpg" alt="ETLİ YAPRAK SARMA">
@@ -540,7 +594,7 @@
     </div>
 
     <!-- Cup Kek -->
-    <div class="flip-card" data-name="CUP KEK" data-price="530" data-category="tatli">
+    <div class="flip-card" data-name="CUP KEK" data-price="530" data-category="tatli" data-unit="adet">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/cup_kek.jpg" alt="CUP KEK">
@@ -593,6 +647,14 @@
       window.scrollTo(0, 0);
     };
     
+    // Tema Değiştirme
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      const button = document.getElementById('theme-toggle');
+      button.textContent = body.classList.contains('dark-mode') ? 'Aydınlık Mod' : 'Karanlık Mod';
+    }
+    
     // Flip Kart Tıklama
     document.querySelectorAll('.flip-card').forEach(card => {
       card.addEventListener('click', function(e) {
@@ -602,32 +664,35 @@
       });
     });
 
-    // Sepete Ekleme (Miktar sormadan)
+    // Sepete Ekleme
     function addToCart(e, button) {
       e.stopPropagation();
       const card = button.closest('.flip-card');
       const name = card.getAttribute('data-name');
       const price = Number(card.getAttribute('data-price'));
+      const unit = card.getAttribute('data-unit') || '';
       
       const existingItem = cart.find(item => item.name === name);
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
-        cart.push({ name, price, quantity: 1 });
+        cart.push({ name, price, unit, quantity: 1 });
       }
       updateCart();
       alert(`${name} sepete eklendi!`);
     }
     
-    // Sepeti Güncelleme (Miktar kontrolü burada)
+    // Sepeti Güncelleme (Birimlerle birlikte)
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
       let total = 0;
+      let totalUnits = { kg: 0, tepsi: 0, adet: 0 };
+      
       cart.forEach((item, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
-          ${item.name} - ${item.price}₺ x 
+          ${item.name} - ${item.price}₺${item.unit ? ` (${item.unit})` : ''} x 
           <div class="quantity-controls">
             <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
             <span>${item.quantity}</span>
@@ -642,8 +707,19 @@
         li.appendChild(removeBtn);
         cartItems.appendChild(li);
         total += item.price * item.quantity;
+        
+        // Birim toplamlarını hesapla
+        if (item.unit === 'kg') totalUnits.kg += item.quantity;
+        else if (item.unit === 'tepsi') totalUnits.tepsi += item.quantity;
+        else if (item.unit === 'adet') totalUnits.adet += item.quantity;
       });
-      document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
+      
+      // Toplam fiyat ve birimleri göster
+      let unitsText = '';
+      if (totalUnits.kg > 0) unitsText += `${totalUnits.kg} kg `;
+      if (totalUnits.tepsi > 0) unitsText += `${totalUnits.tepsi} tepsi `;
+      if (totalUnits.adet > 0) unitsText += `${totalUnits.adet} adet`;
+      document.getElementById('total-price').textContent = `Toplam: ${total}₺${unitsText ? ` (${unitsText.trim()})` : ''}`;
     }
     
     // Miktar Artırma
@@ -678,7 +754,7 @@
       }
       let message = "Merhaba, siparişim:\n";
       cart.forEach(item => {
-        message += `${item.name} - ${item.price}₺ x ${item.quantity} adet\n`;
+        message += `${item.name} - ${item.price}₺ x ${item.quantity} ${item.unit || 'adet'}\n`;
       });
       navigator.clipboard.writeText(message)
         .then(() => {
@@ -689,7 +765,7 @@
         });
     }
     
-    // Sipariş Ver (Instagram sayfasına yönlendirme)
+    // Sipariş Ver
     function placeOrder() {
       if (cart.length === 0) {
         alert("Sepetiniz boş, sipariş veremezsiniz!");
@@ -697,7 +773,7 @@
       }
       let message = "Merhaba, siparişim:\n";
       cart.forEach(item => {
-        message += `${item.name} - ${item.price}₺ x ${item.quantity} adet\n`;
+        message += `${item.name} - ${item.price}₺ x ${item.quantity} ${item.unit || 'adet'}\n`;
       });
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==&text=${encodedMessage}`, "_blank");
