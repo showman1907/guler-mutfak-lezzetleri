@@ -700,11 +700,6 @@
     </div>
   </section>
 
-  <!-- Ziyaretçi Sayısı Bölümü -->
-  <footer id="visitor-footer" style="text-align:center; padding: 1rem; font-size: 0.9rem;">
-    Ziyaretçi Sayısı: <span id="visitor-count">0</span>
-  </footer>
-
   <!-- Kopyalama Bildirimi -->
   <div id="copy-notification"></div>
 
@@ -714,13 +709,6 @@
     // Sayfa açıldığında en üste kaydır
     window.onload = function() {
       window.scrollTo(0, 0);
-      // Ziyaretçi sayısını güncelle (CountAPI kullanarak)
-      fetch("https://api.countapi.xyz/hit/guler-mutfak/visits")
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById("visitor-count").textContent = data.value;
-        })
-        .catch(err => console.error("Ziyaretçi sayısı alınamadı:", err));
     };
     
     // Tema Değiştirme
@@ -763,6 +751,7 @@
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
       let total = 0;
+      
       cart.forEach((item, index) => {
         const li = document.createElement('li');
         let unitText = item.unit ? ` (${item.unit})` : '';
@@ -783,6 +772,7 @@
         cartItems.appendChild(li);
         total += item.price * item.quantity;
       });
+      
       document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
     }
     
