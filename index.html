@@ -51,7 +51,7 @@
       background: rgba(200, 100, 50, 0.8);
     }
     
-    /* Karanlık Mod Butonu (Eski Tasarım) */
+    /* Karanlık Mod Butonu */
     #theme-toggle {
       padding: 0.4rem 0.8rem;
       font-size: 0.9rem;
@@ -94,6 +94,7 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    /* 7 adet ikon (Kendi görsellerinizi images/ klasörüne ekleyin) */
     .icon1 { top: 5%; left: 10%; content: url("images/icon1.png"); }
     .icon2 { top: 15%; left: 80%; content: url("images/icon2.png"); }
     .icon3 { top: 30%; left: 25%; content: url("images/icon3.png"); }
@@ -213,6 +214,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    /* Animasyon gecikmeleri (18 ürün için ayarlanmalı, örnek olarak ilk 12 için verilmiştir) */
     #products .flip-card:nth-child(1) { animation-delay: 0.1s; }
     #products .flip-card:nth-child(2) { animation-delay: 0.2s; }
     #products .flip-card:nth-child(3) { animation-delay: 0.3s; }
@@ -225,6 +227,12 @@
     #products .flip-card:nth-child(10) { animation-delay: 1s; }
     #products .flip-card:nth-child(11) { animation-delay: 1.1s; }
     #products .flip-card:nth-child(12) { animation-delay: 1.2s; }
+    #products .flip-card:nth-child(13) { animation-delay: 1.3s; }
+    #products .flip-card:nth-child(14) { animation-delay: 1.4s; }
+    #products .flip-card:nth-child(15) { animation-delay: 1.5s; }
+    #products .flip-card:nth-child(16) { animation-delay: 1.6s; }
+    #products .flip-card:nth-child(17) { animation-delay: 1.7s; }
+    #products .flip-card:nth-child(18) { animation-delay: 1.8s; }
     
     /* Buton Stilleri */
     .button {
@@ -448,7 +456,7 @@
 </head>
 <body>
   <header>
-    🍰 Güler Mutfak Lezzetleri 🍽️
+    🍰 Güler Mutfak Lezzetleri
     <button id="theme-toggle" class="button" onclick="toggleTheme()">Karanlık Mod</button>
   </header>
 
@@ -474,10 +482,10 @@
     </select>
   </div>
 
-  <!-- Ürünler Bölümü (12 Ürün - Yeni ürünler eklendi) -->
+  <!-- Ürünler Bölümü (18 Ürün) -->
   <section id="products">
-    <!-- İçli Köfte -->
-    <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650" data-category="yemek" data-unit="kg">
+    <!-- 1. İÇLİ KÖFTE(DIŞI ETSİZ) -->
+    <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650" data-category="tuzlu" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/icli_kofte.jpg" alt="İÇLİ KÖFTE(DIŞI ETSİZ)">
@@ -495,14 +503,34 @@
         </div>
       </div>
     </div>
-    
-    <!-- Saray Sarması -->
-    <div class="flip-card" data-name="SARAY SARMASI" data-price="550" data-category="tatli" data-unit="tepsi">
+
+    <!-- 2. İÇLİ KÖFTE(DIŞI ETLİ) - Yeni -->
+    <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETLİ)" data-price="790" data-category="tuzlu" data-unit="kg">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/icli_kofte_dislietli.jpg" alt="İÇLİ KÖFTE(DIŞI ETLİ)">
+          <h3>İÇLİ KÖFTE(DIŞI ETLİ)</h3>
+          <span>Fiyat: 790₺ (1 kg)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden bol etli içli köfte! 🥩🔥<br>
+            İncecik dış hamuru, bol kıymalı iç harcı ve eşsiz lezzetiyle içli köftelerimiz sofralarınızı şenlendirmeye hazır!<br>
+            El yapımı, katkısız ve taptaze!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. SARAY SARMASI -->
+    <div class="flip-card" data-name="SARAY SARMASI" data-price="550" data-category="tatli" data-unit="adet">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/saray_sarmasi.jpg" alt="SARAY SARMASI">
           <h3>SARAY SARMASI</h3>
-          <span>Fiyat: 550₺ (1 tepsi)</span>
+          <span>Fiyat: 550₺</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
@@ -515,8 +543,8 @@
         </div>
       </div>
     </div>
-    
-    <!-- Profiterol -->
+
+    <!-- 4. PROFİTEROL -->
     <div class="flip-card" data-name="PROFİTEROL" data-price="470" data-category="tatli" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -535,8 +563,8 @@
         </div>
       </div>
     </div>
-    
-    <!-- Acılı Ekmek (Hatay Usulü) -->
+
+    <!-- 5. ACILI EKMEK (HATAY USULÜ) -->
     <div class="flip-card" data-name="ACILI EKMEK(HATAY USULÜ)" data-price="600" data-category="tuzlu" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -556,7 +584,7 @@
       </div>
     </div>
 
-    <!-- Elmalı Kurabiye -->
+    <!-- 6. ELMALI KURABİYE -->
     <div class="flip-card" data-name="ELMALI KURABİYE" data-price="550" data-category="tatli" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -576,7 +604,7 @@
       </div>
     </div>
 
-    <!-- Mayalı Poğaça (Sade) -->
+    <!-- 7. MAYALI POĞAÇA (SADE) -->
     <div class="flip-card" data-name="MAYALI POĞAÇA(SADE)" data-price="550" data-category="tuzlu" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -596,7 +624,7 @@
       </div>
     </div>
 
-    <!-- Mayalı Poğaça (Peynirli) -->
+    <!-- 8. MAYALI POĞAÇA (PEYNİRLİ) -->
     <div class="flip-card" data-name="MAYALI POĞAÇA(PEYNİRLİ)" data-price="600" data-category="tuzlu" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -616,7 +644,7 @@
       </div>
     </div>
 
-    <!-- Zeytinyağlı Sarma -->
+    <!-- 9. ZEYTİNYAĞLI SARMA -->
     <div class="flip-card" data-name="ZEYTİNYAĞLI SARMA" data-price="530" data-category="yemek" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -636,7 +664,7 @@
       </div>
     </div>
 
-    <!-- Etli Yaprak Sarma -->
+    <!-- 10. ETLİ YAPRAK SARMA -->
     <div class="flip-card" data-name="ETLİ YAPRAK SARMA" data-price="650" data-category="yemek" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -656,7 +684,7 @@
       </div>
     </div>
 
-    <!-- Cup Kek -->
+    <!-- 11. CUP KEK -->
     <div class="flip-card" data-name="CUP KEK" data-price="530" data-category="tatli" data-unit="24 adet">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -676,7 +704,7 @@
       </div>
     </div>
 
-    <!-- Analı Kızlı -->
+    <!-- 12. ANALI KIZLI -->
     <div class="flip-card" data-name="ANALI KIZLI" data-price="790" data-category="yemek" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -689,13 +717,14 @@
           <h3>Açıklama</h3>
           <p>
             Güler Mutfak Lezzetleri’nden geleneksel Analı Kızlı! 🍲✨<br>
-            Bulgur ve etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor! Geleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!
+            Bulgur ve etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!<br>
+            Geleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Tuzlu Kurabiye -->
+    <!-- 13. TUZLU KURABİYE -->
     <div class="flip-card" data-name="TUZLU KURABİYE" data-price="490" data-category="tuzlu" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -709,6 +738,104 @@
           <p>
             Güler Mutfak Lezzetleri’nden kıyır kıyır tuzlu kurabiye! 🥨✨<br>
             Ağızda dağılan nefis kıvamı, susam, çörek otu ve çekirdek içiyle lezzetlendirilmiş harika tuzlu kurabiyeler çay saatlerinize eşlik etmeye hazır!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. LİMON SOSLU KEK (Yeni) -->
+    <div class="flip-card" data-name="LİMON SOSLU KEK" data-price="510" data-category="tatli" data-unit="bütün">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/limon_soslu_kek.jpg" alt="LİMON SOSLU KEK">
+          <h3>LİMON SOSLU KEK</h3>
+          <span>Fiyat: 510₺ (1 bütün)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden ferahlatan limon soslu kek! 🍋🍰<br>
+            Mis gibi limon kokusu, yumuşacık dokusu ve hafif ekşi tatlı uyumuyla çay saatlerinizin favorisi olacak!<br>
+            Taptaze ve el yapımı bu lezzeti kaçırmayın!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. PATATESLİ GÖZLEME (Yeni) -->
+    <div class="flip-card" data-name="PATATESLİ GÖZLEME" data-price="50" data-category="yemek" data-unit="tane">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/patatesli_gozleme.jpg" alt="PATATESLİ GÖZLEME">
+          <h3>PATATESLİ GÖZLEME</h3>
+          <span>Fiyat: 50₺ (1 tane)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden sıcacık patatesli gözleme! 🥔✨<br>
+            İncecik açılmış hamuru, baharatlarla tatlandırılmış bol patatesli iç harcıyla çıtır çıtır bir lezzet deneyimi!<br>
+            Kahvaltıdan akşam yemeğine her öğünde keyifle tüketebilirsiniz!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16. PEYNİRLİ GÖZLEME (Yeni) -->
+    <div class="flip-card" data-name="PEYNİRLİ GÖZLEME" data-price="65" data-category="tuzlu" data-unit="tane">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/peynirli_gozleme.jpg" alt="PEYNİRLİ GÖZLEME">
+          <h3>PEYNİRLİ GÖZLEME</h3>
+          <span>Fiyat: 65₺ (1 tane)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden sıcacık peynirli gözleme! 🧀🔥<br>
+            İncecik açılmış hamurun arasına bol peynirli iç harç ekleyerek taş fırında veya sacda pişiriyoruz.<br>
+            Kahvaltıya, çay saatine ve her öğüne yakışan bu lezzeti kaçırmayın!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. HARPUT KÖFTE (Yeni) -->
+    <div class="flip-card" data-name="HARPUT KÖFTE" data-price="490" data-category="yemek" data-unit="kg">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/harput_kofte.jpg" alt="HARPUT KÖFTE">
+          <h3>HARPUT KÖFTE</h3>
+          <span>Fiyat: 490₺ (1 kg)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨<br>
+            Elazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve etin mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. KIYMALI HİNGEL MANTI (Yeni) -->
+    <div class="flip-card" data-name="KIYMALI HİNGEL MANTI" data-price="490" data-category="yemek" data-unit="kg">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/kiymali_hingel_manti.jpg" alt="KIYMALI HİNGEL MANTI">
+          <h3>KIYMALI HİNGEL MANTI</h3>
+          <span>Fiyat: 490₺ (1 kg)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden özel kıymalı hingel mantı! 🥟✨<br>
+            El açması incecik hamurun içine bol kıymalı harç eklenerek özenle şekillendirilen hingel mantımız, sarımsaklı yoğurt ve tereyağlı sos eşliğinde lezzet şöleni sunuyor!
           </p>
         </div>
       </div>
@@ -728,9 +855,11 @@
   <section id="contact">
     <h2>İletişim</h2>
     <div class="contact-icons">
+      <!-- Instagram -->
       <a href="https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==" target="_blank">
         <img src="images/instagram_logo.png" alt="Instagram">
       </a>
+      <!-- WhatsApp -->
       <a href="https://wa.me/905319428244" target="_blank">
         <img src="images/whatsapp_logo.png" alt="WhatsApp">
       </a>
@@ -764,7 +893,7 @@
         }
       });
     });
-
+    
     // Sepete Ekleme
     function addToCart(e, button) {
       e.stopPropagation();
@@ -783,7 +912,7 @@
       alert(`${name} sepete eklendi!`);
     }
     
-    // Sepeti Güncelleme (Birim olmadan toplam)
+    // Sepeti Güncelleme
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
@@ -791,13 +920,7 @@
       
       cart.forEach((item, index) => {
         const li = document.createElement('li');
-        let unitText = '';
-        if (item.unit && item.unit.includes('adet')) {
-          const adetCount = parseInt(item.unit.split(' ')[0]) || 1;
-          unitText = ` (${item.unit})`;
-        } else if (item.unit) {
-          unitText = ` (${item.unit})`;
-        }
+        let unitText = item.unit ? ` (${item.unit})` : '';
         li.innerHTML = `
           <div class="cart-item-info">
             ${item.name} - <span class="price">${item.price}₺${unitText}</span>
@@ -816,7 +939,6 @@
         total += item.price * item.quantity;
       });
       
-      // Sadece toplam fiyat göster
       document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
     }
     
@@ -888,7 +1010,11 @@
         message += `${item.name} - ${item.price}₺ x ${item.quantity} ${unitText || 'adet'}\n`;
       });
       const encodedMessage = encodeURIComponent(message);
-      window.open(`https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==&text=${encodedMessage}`, "_blank");
+      if (window.innerWidth < 768) {
+        window.open("https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==", "_blank");
+      } else {
+        window.open(`https://www.instagram.com/m/guler_mutfak_lezzetleri/?text=${encodedMessage}`, "_blank");
+      }
     }
     
     // Bildirim Gösterme
