@@ -11,11 +11,7 @@
 
   <style>
     /* Global Reset & Temel Stil */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: #f9f9f9;
@@ -25,14 +21,11 @@
       position: relative;
       transition: background 0.3s, color 0.3s;
     }
-    body.dark-mode {
-      background: #222;
-      color: #f0f0f0;
-    }
+    body.dark-mode { background: #222; color: #f0f0f0; }
     
     /* Başlık */
     header {
-      background: rgba(255, 145, 77, 0.8);
+      background: rgba(255,145,77,0.8);
       color: #fff;
       padding: 0.8rem 1.5rem;
       text-align: center;
@@ -44,12 +37,10 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       text-transform: uppercase;
       letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
       transition: background 0.3s;
     }
-    body.dark-mode header {
-      background: rgba(200, 100, 50, 0.8);
-    }
+    body.dark-mode header { background: rgba(200,100,50,0.8); }
     
     /* Karanlık Mod Butonu */
     #theme-toggle {
@@ -64,23 +55,15 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       margin-left: 1rem;
     }
-    #theme-toggle:hover {
-      background: #1e8449;
-    }
-    body.dark-mode #theme-toggle {
-      background: #1e8449;
-    }
-    body.dark-mode #theme-toggle:hover {
-      background: #27ae60;
-    }
+    #theme-toggle:hover { background: #1e8449; }
+    body.dark-mode #theme-toggle { background: #1e8449; }
+    body.dark-mode #theme-toggle:hover { background: #27ae60; }
     
     /* Arka Plan İkonları */
     .background-icons {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: -1;
       opacity: 0.2;
       overflow: hidden;
@@ -90,11 +73,8 @@
       width: 100px;
       animation: rotate 10s linear infinite;
     }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    /* 7 adet ikon (Kendi görsellerinizi images/ klasörüne ekleyin) */
+    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    /* 7 adet ikon */
     .icon1 { top: 5%; left: 10%; content: url("images/icon1.png"); }
     .icon2 { top: 15%; left: 80%; content: url("images/icon2.png"); }
     .icon3 { top: 30%; left: 25%; content: url("images/icon3.png"); }
@@ -107,38 +87,28 @@
     .controls {
       text-align: center;
       padding: 1rem;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255,255,255,0.9);
       margin: 1rem auto;
       max-width: 800px;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       transition: background 0.3s;
     }
-    body.dark-mode .controls {
-      background: rgba(60, 60, 60, 0.9);
-    }
+    body.dark-mode .controls { background: rgba(60,60,60,0.9); }
     .controls input, .controls select {
-      padding: 0.5rem;
-      font-size: 1rem;
-      margin: 0.5rem;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      width: 200px;
-      color: #333;
-      background: #fff;
+      padding: 0.5rem; font-size: 1rem; margin: 0.5rem;
+      border: 1px solid #ddd; border-radius: 5px; width: 200px;
+      color: #333; background: #fff;
       transition: background 0.3s, color 0.3s, border-color 0.3s;
     }
     body.dark-mode .controls input, body.dark-mode .controls select {
-      background: #444;
-      color: #f0f0f0;
-      border-color: #666;
+      background: #444; color: #f0f0f0; border-color: #666;
     }
     
     /* Flip Kart Yapısı */
     .flip-card {
       background: transparent;
-      width: 300px;
-      height: 400px;
+      width: 300px; height: 400px;
       perspective: 1000px;
       margin: 1rem;
       position: relative;
@@ -147,24 +117,18 @@
       animation: fadeInUp 0.5s ease forwards;
       transition: transform 0.3s ease;
     }
-    .flip-card:hover {
-      transform: scale(1.05);
-    }
+    .flip-card:hover { transform: scale(1.05); }
     .flip-card-inner {
       position: relative;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       text-align: center;
       transition: transform 0.6s;
       transform-style: preserve-3d;
     }
-    .flip-card-inner.flipped {
-      transform: rotateY(180deg);
-    }
+    .flip-card-inner.flipped { transform: rotateY(180deg); }
     .flip-card-front, .flip-card-back {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       backface-visibility: hidden;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -177,8 +141,7 @@
       transition: background 0.3s, color 0.3s;
     }
     body.dark-mode .flip-card-front, body.dark-mode .flip-card-back {
-      background: #333;
-      color: #f0f0f0;
+      background: #333; color: #f0f0f0;
     }
     .flip-card-front img {
       width: 100%;
@@ -186,35 +149,24 @@
       object-fit: cover;
       border-radius: 12px;
     }
-    .flip-card-front h3 {
-      margin: 0.5rem 0;
+    .flip-card-front h3 { margin: 0.5rem 0; }
+    .flip-card-front span { font-weight: bold; margin-bottom: 0.5rem; }
+    /* Ekstra bilgi (Patatesli ve Peynirli Gözleme) */
+    .extra-info {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 0.3rem;
     }
-    .flip-card-front span {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-    .flip-card-back {
-      transform: rotateY(180deg);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .flip-card-back h3 {
-      margin-bottom: 0.5rem;
-    }
-    .flip-card-back p {
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
+    .flip-card-back { transform: rotateY(180deg); padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .flip-card-back h3 { margin-bottom: 0.5rem; }
+    .flip-card-back p { font-size: 0.9rem; line-height: 1.4; }
     
     /* Ürün Yükleme Animasyonu */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Animasyon gecikmeleri (18 ürün için ayarlanmalı, örnek olarak ilk 12 için verilmiştir) */
+    /* Animasyon gecikmeleri (21 ürün için ayarlandı) */
     #products .flip-card:nth-child(1) { animation-delay: 0.1s; }
     #products .flip-card:nth-child(2) { animation-delay: 0.2s; }
     #products .flip-card:nth-child(3) { animation-delay: 0.3s; }
@@ -233,6 +185,9 @@
     #products .flip-card:nth-child(16) { animation-delay: 1.6s; }
     #products .flip-card:nth-child(17) { animation-delay: 1.7s; }
     #products .flip-card:nth-child(18) { animation-delay: 1.8s; }
+    #products .flip-card:nth-child(19) { animation-delay: 1.9s; }
+    #products .flip-card:nth-child(20) { animation-delay: 2s; }
+    #products .flip-card:nth-child(21) { animation-delay: 2.1s; }
     
     /* Buton Stilleri */
     .button {
@@ -246,15 +201,9 @@
       transition: background 0.3s;
       margin-top: 0.5rem;
     }
-    .button:hover {
-      background: #1e8449;
-    }
-    body.dark-mode .button {
-      background: #1e8449;
-    }
-    body.dark-mode .button:hover {
-      background: #27ae60;
-    }
+    .button:hover { background: #1e8449; }
+    body.dark-mode .button { background: #1e8449; }
+    body.dark-mode .button:hover { background: #27ae60; }
     
     /* Sepet & Sipariş Bölümü */
     #cart {
@@ -272,28 +221,19 @@
       color: #f0f0f0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
-    #cart h2 {
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-    #cart-items {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 1rem;
-    }
+    #cart h2 { margin-bottom: 1rem; font-size: 1.3rem; }
+    #cart-items { list-style: none; padding: 0; margin-bottom: 1rem; }
     #cart-items li {
       margin: 0.5rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.5rem;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.1);
       border-radius: 5px;
       transition: background 0.3s;
     }
-    body.dark-mode #cart-items li {
-      background: rgba(60, 60, 60, 0.5);
-    }
+    body.dark-mode #cart-items li { background: rgba(60,60,60,0.5); }
     .cart-item-info {
       flex-grow: 1;
       text-align: left;
@@ -320,15 +260,9 @@
       font-size: 0.9rem;
       transition: background 0.3s;
     }
-    .quantity-btn:hover {
-      background: #2980b9;
-    }
-    body.dark-mode .quantity-btn {
-      background: #2980b9;
-    }
-    body.dark-mode .quantity-btn:hover {
-      background: #3498db;
-    }
+    .quantity-btn:hover { background: #2980b9; }
+    body.dark-mode .quantity-btn { background: #2980b9; }
+    body.dark-mode .quantity-btn:hover { background: #3498db; }
     .remove-button {
       background: #e74c3c;
       border: none;
@@ -339,20 +273,10 @@
       font-size: 0.8rem;
       transition: background 0.3s;
     }
-    .remove-button:hover {
-      background: #c0392b;
-    }
-    body.dark-mode .remove-button {
-      background: #c0392b;
-    }
-    body.dark-mode .remove-button:hover {
-      background: #e74c3c;
-    }
-    #total-price {
-      font-weight: bold;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-    }
+    .remove-button:hover { background: #c0392b; }
+    body.dark-mode .remove-button { background: #c0392b; }
+    body.dark-mode .remove-button:hover { background: #e74c3c; }
+    #total-price { font-weight: bold; margin-top: 1rem; font-size: 1.1rem; }
     
     /* Bildirim Stili */
     #copy-notification {
@@ -368,9 +292,7 @@
       z-index: 2000;
       transition: background 0.3s;
     }
-    body.dark-mode #copy-notification {
-      background: #1e8449;
-    }
+    body.dark-mode #copy-notification { background: #1e8449; }
     
     /* Ürünler Bölümü */
     #products {
@@ -386,10 +308,7 @@
       text-align: center;
       margin: 2rem auto;
     }
-    #contact h2 {
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
+    #contact h2 { margin-bottom: 1rem; font-size: 1.4rem; }
     .contact-icons {
       display: flex;
       justify-content: center;
@@ -402,55 +321,21 @@
       cursor: pointer;
       transition: transform 0.3s;
     }
-    .contact-icons img:hover {
-      transform: scale(1.1);
-    }
+    .contact-icons img:hover { transform: scale(1.1); }
     
     /* Mobil Responsive Ayarlar */
     @media (max-width: 768px) {
-      .flip-card {
-        width: 90%;
-        max-width: 250px;
-        height: 350px;
-      }
-      header {
-        font-size: 1.3rem;
-        padding: 0.6rem 1rem;
-      }
-      #theme-toggle {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
-        margin-left: 0.5rem;
-      }
-      .button {
-        padding: 0.65rem 1.2rem;
-        font-size: 0.9rem;
-      }
-      .flip-card-front img {
-        height: 150px;
-      }
-      .controls input, .controls select {
-        width: 90%;
-      }
-      #cart {
-        padding: 0.8rem;
-        margin: 1rem auto;
-      }
-      #cart h2 {
-        font-size: 1.1rem;
-      }
-      #cart-items li {
-        padding: 0.3rem;
-        font-size: 0.8rem;
-      }
-      .quantity-btn {
-        padding: 0.1rem 0.4rem;
-        font-size: 0.7rem;
-      }
-      .remove-button {
-        padding: 0.2rem 0.4rem;
-        font-size: 0.7rem;
-      }
+      .flip-card { width: 90%; max-width: 250px; height: 350px; }
+      header { font-size: 1.3rem; padding: 0.6rem 1rem; }
+      #theme-toggle { padding: 0.3rem 0.6rem; font-size: 0.8rem; margin-left: 0.5rem; }
+      .button { padding: 0.65rem 1.2rem; font-size: 0.9rem; }
+      .flip-card-front img { height: 150px; }
+      .controls input, .controls select { width: 90%; }
+      #cart { padding: 0.8rem; margin: 1rem auto; }
+      #cart h2 { font-size: 1.1rem; }
+      #cart-items li { padding: 0.3rem; font-size: 0.8rem; }
+      .quantity-btn { padding: 0.1rem 0.4rem; font-size: 0.7rem; }
+      .remove-button { padding: 0.2rem 0.4rem; font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -482,9 +367,9 @@
     </select>
   </div>
 
-  <!-- Ürünler Bölümü (18 Ürün) -->
+  <!-- Ürünler Bölümü (21 Ürün) -->
   <section id="products">
-    <!-- 1. İÇLİ KÖFTE(DIŞI ETSİZ) -->
+    <!-- 1. İÇLİ KÖFTE (DIŞI ETSİZ) -->
     <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650" data-category="tuzlu" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -504,7 +389,7 @@
       </div>
     </div>
 
-    <!-- 2. İÇLİ KÖFTE(DIŞI ETLİ) - Yeni -->
+    <!-- 2. İÇLİ KÖFTE (DIŞI ETLİ) -->
     <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETLİ)" data-price="790" data-category="tuzlu" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -524,13 +409,13 @@
       </div>
     </div>
 
-    <!-- 3. SARAY SARMASI -->
-    <div class="flip-card" data-name="SARAY SARMASI" data-price="550" data-category="tatli" data-unit="adet">
+    <!-- 3. SARAY SARMASI (Fiyat güncellendi: 510₺) -->
+    <div class="flip-card" data-name="SARAY SARMASI" data-price="510" data-category="tatli" data-unit="adet">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/saray_sarmasi.jpg" alt="SARAY SARMASI">
           <h3>SARAY SARMASI</h3>
-          <span>Fiyat: 550₺</span>
+          <span>Fiyat: 510₺</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
@@ -612,6 +497,7 @@
           <h3>MAYALI POĞAÇA(SADE)</h3>
           <span>Fiyat: 550₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+          <p class="extra-info">(10 adet ve üzeri sipariş alınır)</p>
         </div>
         <div class="flip-card-back">
           <h3>Açıklama</h3>
@@ -632,6 +518,7 @@
           <h3>MAYALI POĞAÇA(PEYNİRLİ)</h3>
           <span>Fiyat: 600₺ (1 tepsi)</span>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+          <p class="extra-info">(10 adet ve üzeri sipariş alınır)</p>
         </div>
         <div class="flip-card-back">
           <h3>Açıklama</h3>
@@ -743,7 +630,7 @@
       </div>
     </div>
 
-    <!-- 14. LİMON SOSLU KEK (Yeni) -->
+    <!-- 14. LİMON SOSLU KEK -->
     <div class="flip-card" data-name="LİMON SOSLU KEK" data-price="510" data-category="tatli" data-unit="bütün">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -763,13 +650,14 @@
       </div>
     </div>
 
-    <!-- 15. PATATESLİ GÖZLEME (Yeni) -->
+    <!-- 15. PATATESLİ GÖZLEME -->
     <div class="flip-card" data-name="PATATESLİ GÖZLEME" data-price="50" data-category="yemek" data-unit="tane">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/patatesli_gozleme.jpg" alt="PATATESLİ GÖZLEME">
           <h3>PATATESLİ GÖZLEME</h3>
           <span>Fiyat: 50₺ (1 tane)</span>
+          <p class="extra-info">(10 adet ve üzeri sipariş alınır)</p>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
@@ -783,13 +671,14 @@
       </div>
     </div>
 
-    <!-- 16. PEYNİRLİ GÖZLEME (Yeni) -->
+    <!-- 16. PEYNİRLİ GÖZLEME -->
     <div class="flip-card" data-name="PEYNİRLİ GÖZLEME" data-price="65" data-category="tuzlu" data-unit="tane">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/peynirli_gozleme.jpg" alt="PEYNİRLİ GÖZLEME">
           <h3>PEYNİRLİ GÖZLEME</h3>
           <span>Fiyat: 65₺ (1 tane)</span>
+          <p class="extra-info">(10 adet ve üzeri sipariş alınır)</p>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
@@ -803,7 +692,7 @@
       </div>
     </div>
 
-    <!-- 17. HARPUT KÖFTE (Yeni) -->
+    <!-- 17. HARPUT KÖFTE -->
     <div class="flip-card" data-name="HARPUT KÖFTE" data-price="490" data-category="yemek" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -822,7 +711,7 @@
       </div>
     </div>
 
-    <!-- 18. KIYMALI HİNGEL MANTI (Yeni) -->
+    <!-- 18. KIYMALI HİNGEL MANTI -->
     <div class="flip-card" data-name="KIYMALI HİNGEL MANTI" data-price="490" data-category="yemek" data-unit="kg">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -836,6 +725,65 @@
           <p>
             Güler Mutfak Lezzetleri’nden özel kıymalı hingel mantı! 🥟✨<br>
             El açması incecik hamurun içine bol kıymalı harç eklenerek özenle şekillendirilen hingel mantımız, sarımsaklı yoğurt ve tereyağlı sos eşliğinde lezzet şöleni sunuyor!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 19. FINDIK PORTAKALLI ANNE KURABİYESİ (Yeni) -->
+    <div class="flip-card" data-name="FINDIK PORTAKALLI ANNE KURABİYESİ" data-price="490" data-category="tatli" data-unit="tepsi">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/findik_portakallı_anne_kurabiyesi.jpg" alt="FINDIK PORTAKALLI ANNE KURABİYESİ">
+          <h3>FINDIK PORTAKALLI ANNE KURABİYESİ</h3>
+          <span>Fiyat: 490₺ (1 tepsi)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden fındıklı portakallı anne kurabiyesi! 🍊🥜<br>
+            Mis gibi portakal kokusu ve fındık parçalarıyla taçlandırılmış, yumuşacık kıvamı ve kıyır kıyır dokusuyla çocukluğunuzun lezzetini sunuyoruz!<br>
+            Çay saatlerinizin vazgeçilmezi olacak!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20. SÜTLÜ KAYMAKLI SARAY SARMASI (Yeni) -->
+    <div class="flip-card" data-name="SÜTLÜ KAYMAKLI SARAY SARMASI" data-price="550" data-category="tatli" data-unit="tepsi">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/sutlu_kaymakli_saray_sarmasi.jpg" alt="SÜTLÜ KAYMAKLI SARAY SARMASI">
+          <h3>SÜTLÜ KAYMAKLI SARAY SARMASI</h3>
+          <span>Fiyat: 550₺ (1 tepsi)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden sütlü kaymaklı Saray Sarması! 🥛🍰<br>
+            Yumuşacık kıvamı, bol kaymak dolgusu ve hindistan ceviziyle kaplanmış lezzetiyle ağızda eriyen bir tatlı keyfi sunuyoruz!<br>
+            Hafif ve nefis bu lezzeti kaçırmayın!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 21. ELAZIĞ İÇLİ KÖFTE (Yeni) -->
+    <div class="flip-card" data-name="ELAZIĞ İÇLİ KÖFTE" data-price="790" data-category="yemek" data-unit="kg">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/elazig_icli_kofte.jpg" alt="ELAZIĞ İÇLİ KÖFTE">
+          <h3>ELAZIĞ İÇLİ KÖFTE</h3>
+          <span>Fiyat: 790₺ (1 kg)</span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden Elazığ usulü içli köfte! 🥩🔥<br>
+            Özenle hazırlanan dış hamuru, baharatlarla lezzetlendirilmiş bol kıymalı iç harcı ve özel şekliyle Elazığ mutfağının vazgeçilmez lezzetini sunuyoruz!
           </p>
         </div>
       </div>
@@ -873,9 +821,7 @@
     let cart = [];
     
     // Sayfa açıldığında en üste kaydır
-    window.onload = function() {
-      window.scrollTo(0, 0);
-    };
+    window.onload = function() { window.scrollTo(0, 0); };
     
     // Tema Değiştirme
     function toggleTheme() {
@@ -903,11 +849,8 @@
       const unit = card.getAttribute('data-unit') || '';
       
       const existingItem = cart.find(item => item.name === name);
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({ name, price, unit, quantity: 1 });
-      }
+      if (existingItem) { existingItem.quantity += 1; }
+      else { cart.push({ name, price, unit, quantity: 1 }); }
       updateCart();
       alert(`${name} sepete eklendi!`);
     }
@@ -950,11 +893,8 @@
     
     // Miktar Azaltma
     function decreaseQuantity(index) {
-      if (cart[index].quantity > 1) {
-        cart[index].quantity -= 1;
-      } else {
-        removeFromCart(index);
-      }
+      if (cart[index].quantity > 1) { cart[index].quantity -= 1; }
+      else { removeFromCart(index); }
       updateCart();
     }
     
@@ -984,12 +924,8 @@
         message += `${item.name} - ${item.price}₺ x ${item.quantity} ${unitText || 'adet'}\n`;
       });
       navigator.clipboard.writeText(message)
-        .then(() => {
-          showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz.");
-        })
-        .catch(() => {
-          alert("Kopyalama başarısız, lütfen manuel kopyalayın.");
-        });
+        .then(() => { showCopyNotification("Sepetiniz kopyalandı! Sipariş vermek için Instagram Sipariş Ver butonunu kullanabilirsiniz."); })
+        .catch(() => { alert("Kopyalama başarısız, lütfen manuel kopyalayın."); });
     }
     
     // Sipariş Ver
@@ -1022,9 +958,7 @@
       const notification = document.getElementById('copy-notification');
       notification.textContent = message;
       notification.style.display = "block";
-      setTimeout(() => {
-        notification.style.display = "none";
-      }, 5000);
+      setTimeout(() => { notification.style.display = "none"; }, 5000);
     }
     
     // Arama ve Filtreleme
