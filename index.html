@@ -57,16 +57,14 @@
       transition: background 0.3s;
     }
     body.dark-mode #campaign-text { background: #c0392b; }
-    @keyframes blink {
-      50% { opacity: 0.7; }
-    }
+    @keyframes blink { 50% { opacity: 0.7; } }
     
     #countdown {
       font-size: 0.8rem;
       margin-top: 0.2rem;
       color: #fff;
     }
-
+    
     /* Karanlık Mod Butonu */
     #theme-toggle {
       padding: 0.4rem 0.8rem;
@@ -155,6 +153,8 @@
       position: absolute;
       width: 100%; height: 100%;
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       background: #fff;
@@ -176,7 +176,12 @@
       position: relative;
     }
     .flip-card-front h3 { margin: 0.5rem 0; }
-    .flip-card-front span { font-weight: bold; margin-bottom: 0.5rem; }
+    /* Fiyat Alanı */
+    .price-container { margin: 0.5rem 0; }
+    .original-price { text-decoration: line-through; color: #888; margin-bottom: 0.2rem; font-size: 0.9rem; }
+    .discount-price { color: #27ae60; font-weight: bold; }
+    .discount-alert { color: #e74c3c; font-size: 1.2rem; animation: blink 1.5s infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
     /* İndirim Etiketi (Ürün Resminin Köşesinde) */
     .discount-tag {
       position: absolute;
@@ -191,32 +196,14 @@
       transition: background 0.3s;
     }
     body.dark-mode .discount-tag { background: #c0392b; }
-    /* Ekstra bilgi (Patatesli ve Peynirli Gözleme) */
+    /* Ekstra bilgi (Sadece Gözleme ürünlerinde) */
     .extra-info {
       font-size: 0.8rem;
       color: #555;
       margin-top: 0.3rem;
     }
     body.dark-mode .extra-info { color: #bbb; }
-    /* İndirim için stil */
-    .original-price {
-      text-decoration: line-through;
-      color: #888;
-      margin-bottom: 0.2rem;
-      font-size: 0.9rem;
-    }
-    .discount-price {
-      color: #27ae60;
-      font-weight: bold;
-    }
-    .discount-alert {
-      color: #e74c3c;
-      font-size: 1.2rem;
-      animation: blink 1.5s infinite;
-    }
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
+    
     .flip-card-back { transform: rotateY(180deg); padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .flip-card-back h3 { margin-bottom: 0.5rem; }
     .flip-card-back p { font-size: 0.9rem; line-height: 1.4; }
@@ -226,7 +213,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Animasyon gecikmeleri (21 ürün için ayarlandı) */
+    /* Animasyon gecikmeleri (23 ürün için ayarlandı) */
     #products .flip-card:nth-child(1) { animation-delay: 0.1s; }
     #products .flip-card:nth-child(2) { animation-delay: 0.2s; }
     #products .flip-card:nth-child(3) { animation-delay: 0.3s; }
@@ -248,6 +235,9 @@
     #products .flip-card:nth-child(19) { animation-delay: 1.9s; }
     #products .flip-card:nth-child(20) { animation-delay: 2s; }
     #products .flip-card:nth-child(21) { animation-delay: 2.1s; }
+    /* Yeni Pizza ürünleri */
+    #products .flip-card:nth-child(22) { animation-delay: 2.2s; }
+    #products .flip-card:nth-child(23) { animation-delay: 2.3s; }
     
     /* Buton Stilleri */
     .button {
@@ -432,7 +422,7 @@
     </select>
   </div>
 
-  <!-- Ürünler Bölümü (21 Ürün) -->
+  <!-- Ürünler Bölümü (Toplam 23 Ürün) -->
   <section id="products">
     <!-- 1. İÇLİ KÖFTE (DIŞI ETSİZ) -->
     <div class="flip-card" data-name="İÇLİ KÖFTE(DIŞI ETSİZ)" data-price="650" data-discount="550" data-category="tuzlu" data-unit="kg">
@@ -482,7 +472,7 @@
       </div>
     </div>
 
-    <!-- 3. SARAY SARMASI (Fiyat güncellendi: 550₺) -->
+    <!-- 3. SARAY SARMASI -->
     <div class="flip-card" data-name="SARAY SARMASI" data-price="550" data-discount="480" data-category="tatli" data-unit="tepsi">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -613,6 +603,7 @@
             <span class="original-price">600₺ (1 tepsi)</span><br>
             <span class="discount-alert">!</span> <span class="discount-price">550₺ (1 tepsi)</span>
           </span>
+          <p class="extra-info">(10 adet ve üzeri sipariş alınır)</p>
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
@@ -927,6 +918,54 @@
         </div>
       </div>
     </div>
+
+    <!-- 22. PİZZA (BOL MALZEMELİ) -->
+    <div class="flip-card" data-name="PİZZA (Bol Malzemeli)" data-price="220" data-discount="190" data-category="yemek" data-unit="Orta boy">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/pizza1.jpg" alt="PİZZA (Bol Malzemeli)">
+          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <h3>PİZZA (Bol Malzemeli)</h3>
+          <span>
+            <span class="original-price">220₺ (Orta boy)</span><br>
+            <span class="discount-alert">!</span> <span class="discount-price">190₺ (Orta boy)</span>
+          </span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥<br>
+            Ev yapımı incecik hamuru, bol kaşar peyniri, sucuk, biber, mantar, mısır, domates ve zeytinle mükemmel bir lezzet şöleni sunuyoruz!<br>
+            Fırından çıkan taptaze pizzamız sofralarınıza lezzet katmaya hazır!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 23. PİZZA (Sucuk, Kaşarlı) -->
+    <div class="flip-card" data-name="PİZZA (Sucuk, Kaşarlı)" data-price="220" data-discount="190" data-category="yemek" data-unit="Orta boy">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="images/pizza2.jpg" alt="PİZZA (Sucuk, Kaşarlı)">
+          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <h3>PİZZA (Sucuk, Kaşarlı)</h3>
+          <span>
+            <span class="original-price">220₺ (Orta boy)</span><br>
+            <span class="discount-alert">!</span> <span class="discount-price">190₺ (Orta boy)</span>
+          </span>
+          <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
+        </div>
+        <div class="flip-card-back">
+          <h3>Açıklama</h3>
+          <p>
+            Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥<br>
+            Sucuk, kaşar peyniri, siyah zeytin ve mısırın enfes uyumuyla hazırlanan ev yapımı pizzamız, lezzet garantili!<br>
+            Çıtır kenarları ve bol malzemesiyle sofralarınızı şenlendirmeye hazır!
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Sepet & Sipariş Bölümü -->
@@ -959,7 +998,7 @@
   <script>
     let cart = [];
     
-    // Sayfa açıldığında en üste kaydır
+    // Sayfa açıldığında en üste kaydır ve geri sayımı başlat
     window.onload = function() { 
       window.scrollTo(0, 0);
       updateCountdown();
@@ -1107,44 +1146,38 @@
     const searchBar = document.getElementById('search-bar');
     const categoryFilter = document.getElementById('category-filter');
     const products = document.querySelectorAll('.flip-card');
-
+    
     function filterProducts() {
       const searchText = searchBar.value.toLowerCase();
       const category = categoryFilter.value;
-
       products.forEach(product => {
         const name = product.getAttribute('data-name').toLowerCase();
         const productCategory = product.getAttribute('data-category');
         const matchesSearch = name.includes(searchText);
         const matchesCategory = category === 'all' || productCategory === category;
-
         product.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
       });
     }
-
+    
     searchBar.addEventListener('input', filterProducts);
     categoryFilter.addEventListener('change', filterProducts);
-
+    
     // Geri Sayım (29.03.2025'e kadar)
     function updateCountdown() {
       const targetDate = new Date("2025-03-29T23:59:59").getTime();
       const countdown = document.getElementById('countdown');
-      
       const update = setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
-
         if (distance < 0) {
           clearInterval(update);
           countdown.innerHTML = "Kampanya süresi bitti!";
           return;
         }
-
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
         countdown.innerHTML = `Kalan Süre: ${days}g ${hours}s ${minutes}d ${seconds}s`;
       }, 1000);
     }
