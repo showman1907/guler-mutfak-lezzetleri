@@ -42,7 +42,7 @@
     }
     body.dark-mode header { background: rgba(200,100,50,0.8); }
     
-    /* Kampanya Süresi (Sınırlı Süre İndirim!) */
+    /* Kampanya Süresi Banner */
     #campaign-text {
       text-align: center;
       padding: 0.3rem;
@@ -106,7 +106,7 @@
     .icon6 { top: 75%; left: 70%; content: url("images/icon6.png"); }
     .icon7 { top: 85%; left: 40%; content: url("images/icon7.png"); }
     
-    /* Kontroller (Arama ve Filtre) */
+    /* Kontroller (Arama & Filtre) */
     .controls {
       text-align: center;
       padding: 1rem;
@@ -147,6 +147,8 @@
       text-align: center;
       transition: transform 0.6s;
       transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
     }
     .flip-card-inner.flipped { transform: rotateY(180deg); }
     .flip-card-front, .flip-card-back {
@@ -213,7 +215,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Animasyon gecikmeleri (23 ürün için ayarlandı) */
+    /* Animasyon gecikmeleri (Toplam 23 ürün için ayarlandı) */
     #products .flip-card:nth-child(1) { animation-delay: 0.1s; }
     #products .flip-card:nth-child(2) { animation-delay: 0.2s; }
     #products .flip-card:nth-child(3) { animation-delay: 0.3s; }
@@ -235,7 +237,6 @@
     #products .flip-card:nth-child(19) { animation-delay: 1.9s; }
     #products .flip-card:nth-child(20) { animation-delay: 2s; }
     #products .flip-card:nth-child(21) { animation-delay: 2.1s; }
-    /* Yeni Pizza ürünleri */
     #products .flip-card:nth-child(22) { animation-delay: 2.2s; }
     #products .flip-card:nth-child(23) { animation-delay: 2.3s; }
     
@@ -429,7 +430,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/icli_kofte.jpg" alt="İÇLİ KÖFTE(DIŞI ETSİZ)">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>İÇLİ KÖFTE(DIŞI ETSİZ)</h3>
           <span>
             <span class="original-price">650₺ (1 kg)</span><br>
@@ -453,7 +454,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/icli_kofte_dislietli.jpg" alt="İÇLİ KÖFTE(DIŞI ETLİ)">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>İÇLİ KÖFTE(DIŞI ETLİ)</h3>
           <span>
             <span class="original-price">790₺ (1 kg)</span><br>
@@ -477,7 +478,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/saray_sarmasi.jpg" alt="SARAY SARMASI">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>SARAY SARMASI</h3>
           <span>
             <span class="original-price">550₺ (1 tepsi)</span><br>
@@ -501,7 +502,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/profiterol.jpg" alt="PROFİTEROL">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>PROFİTEROL</h3>
           <span>
             <span class="original-price">480₺ (1 kg)</span><br>
@@ -525,7 +526,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/acili_ekmek.jpg" alt="ACILI EKMEK(HATAY USULÜ)">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>ACILI EKMEK(HATAY USULÜ)</h3>
           <span>
             <span class="original-price">600₺ (1 tepsi)</span><br>
@@ -549,7 +550,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/elmali_kurabiye.jpg" alt="ELMALI KURABİYE">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>ELMALI KURABİYE</h3>
           <span>
             <span class="original-price">550₺ (1 tepsi)</span><br>
@@ -573,7 +574,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/mayali_pogaca_sade.jpg" alt="MAYALI POĞAÇA(SADE)">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>MAYALI POĞAÇA(SADE)</h3>
           <span>
             <span class="original-price">550₺ (1 tepsi)</span><br>
@@ -597,13 +598,13 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/mayali_pogaca_peynirli.jpg" alt="MAYALI POĞAÇA(PEYNİRLİ)">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>MAYALI POĞAÇA(PEYNİRLİ)</h3>
           <span>
             <span class="original-price">600₺ (1 tepsi)</span><br>
             <span class="discount-alert">!</span> <span class="discount-price">550₺ (1 tepsi)</span>
           </span>
-          <p class="extra-info">(10 adet ve üzeri sipariş alınır)</p>
+          <!-- Extra bilgi kaldırıldı -->
           <button onclick="addToCart(event, this)" class="button">Sepete Ekle</button>
         </div>
         <div class="flip-card-back">
@@ -622,7 +623,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/zeytinyagli_sarma.jpg" alt="ZEYTİNYAĞLI SARMA">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>ZEYTİNYAĞLI SARMA</h3>
           <span>
             <span class="original-price">550₺ (1 kg)</span><br>
@@ -646,7 +647,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/etli_yaprak_sarma.jpg" alt="ETLİ YAPRAK SARMA">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>ETLİ YAPRAK SARMA</h3>
           <span>
             <span class="original-price">650₺ (1 kg)</span><br>
@@ -670,7 +671,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/cup_kek.jpg" alt="CUP KEK">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>CUP KEK</h3>
           <span>
             <span class="original-price">530₺ (24 Adet)</span><br>
@@ -694,7 +695,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/anali_kizli.jpg" alt="ANALI KIZLI">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>ANALI KIZLI</h3>
           <span>
             <span class="original-price">790₺ (1 kg)</span><br>
@@ -718,7 +719,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/tuzlu_kurabiye.jpg" alt="TUZLU KURABİYE">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>TUZLU KURABİYE</h3>
           <span>
             <span class="original-price">550₺ (1 tepsi)</span><br>
@@ -741,7 +742,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/limon_soslu_kek.jpg" alt="LİMON SOSLU KEK">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>LİMON SOSLU KEK</h3>
           <span>
             <span class="original-price">550₺ (1 bütün)</span><br>
@@ -761,7 +762,7 @@
     </div>
 
     <!-- 15. PATATESLİ GÖZLEME -->
-    <div class="flip-card" data-name="PATATESLİ GÖZLEME" data-price="50" data-category="yemek" data-unit="tane">
+    <div class="flip-card" data-name="PATATESLİ GÖZLEME" data-price="50" data-discount="50" data-category="yemek" data-unit="tane">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/patatesli_gozleme.jpg" alt="PATATESLİ GÖZLEME">
@@ -782,7 +783,7 @@
     </div>
 
     <!-- 16. PEYNİRLİ GÖZLEME -->
-    <div class="flip-card" data-name="PEYNİRLİ GÖZLEME" data-price="65" data-category="tuzlu" data-unit="tane">
+    <div class="flip-card" data-name="PEYNİRLİ GÖZLEME" data-price="65" data-discount="65" data-category="tuzlu" data-unit="tane">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/peynirli_gozleme.jpg" alt="PEYNİRLİ GÖZLEME">
@@ -807,7 +808,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/harput_kofte.jpg" alt="HARPUT KÖFTE">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>HARPUT KÖFTE</h3>
           <span>
             <span class="original-price">550₺ (1 kg)</span><br>
@@ -830,7 +831,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/kiymali_hingel_manti.jpg" alt="KIYMALI HİNGEL MANTI">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>KIYMALI HİNGEL MANTI</h3>
           <span>
             <span class="original-price">600₺ (1 kg)</span><br>
@@ -853,7 +854,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/findik_portakallı_anne_kurabiyesi.jpg" alt="FINDIK PORTAKALLI ANNE KURABİYESİ">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>FINDIK PORTAKALLI ANNE KURABİYESİ</h3>
           <span>
             <span class="original-price">550₺ (1 tepsi)</span><br>
@@ -877,7 +878,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/sutlu_kaymakli_saray_sarmasi.jpg" alt="SÜTLÜ KAYMAKLI SARAY SARMASI">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>SÜTLÜ KAYMAKLI SARAY SARMASI</h3>
           <span>
             <span class="original-price">600₺ (1 tepsi)</span><br>
@@ -901,7 +902,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/elazig_icli_kofte.jpg" alt="ELAZIĞ İÇLİ KÖFTE">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>ELAZIĞ İÇLİ KÖFTE</h3>
           <span>
             <span class="original-price">790₺ (1 kg)</span><br>
@@ -919,12 +920,12 @@
       </div>
     </div>
 
-    <!-- 22. PİZZA (BOL MALZEMELİ) -->
-    <div class="flip-card" data-name="PİZZA (Bol Malzemeli)" data-price="220" data-discount="190" data-category="yemek" data-unit="Orta boy">
+    <!-- 22. PİZZA (Bol Malzemeli) -->
+    <div class="flip-card" data-name="PİZZA (Bol Malzemeli)" data-price="250" data-discount="210" data-category="yemek" data-unit="Orta boy">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/pizza1.jpg" alt="PİZZA (Bol Malzemeli)">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>PİZZA (Bol Malzemeli)</h3>
           <span>
             <span class="original-price">250₺ (Orta boy)</span><br>
@@ -948,7 +949,7 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="images/pizza2.jpg" alt="PİZZA (Sucuk, Kaşarlı)">
-          <div class="discount-tag">Ramazan boyunca İndirimde!</div>
+          <div class="discount-tag">İndirimde!</div>
           <h3>PİZZA (Sucuk, Kaşarlı)</h3>
           <span>
             <span class="original-price">220₺ (Orta boy)</span><br>
@@ -1171,7 +1172,7 @@
         const distance = targetDate - now;
         if (distance < 0) {
           clearInterval(update);
-          countdown.innerHTML = "Kampanya süresi bitti!";
+          countdown.innerHTML = "";  // Kampanya süresi bittiğinde boş bırakılır.
           return;
         }
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
